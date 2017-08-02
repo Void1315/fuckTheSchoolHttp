@@ -34,7 +34,7 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="index.html"><img src="{{asset('img/index/logo-dark.png')}}" alt="Klorofil Logo" class="img-responsive logo"></a>
+				<a href="{{url('/index')}}"><img src="{{asset('img/index/logo-dark.png')}}" alt="Klorofil Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -52,15 +52,12 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('img/index/user.png')}}" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('img/index/user.png')}}" class="img-circle" alt="Avatar"> <span>{{$user->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="{{asset('/config')}}"><i class="lnr lnr-cog"></i> <span>账号设置</span></a></li>
-								<li><a href="#"><i class="lnr lnr-exit"></i> <span>退出</span></a></li>
+								<li><a href="{{ route('logout') }}"><i class="lnr lnr-exit"></i> <span>退出</span></a></li>
 							</ul>
 						</li>
-						<!-- <li>
-							<a class="update-pro" href="#downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
-						</li> -->
 					</ul>
 				</div>
 			</div>
@@ -71,20 +68,7 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="index.html" class="active"><i class="lnr lnr-home"></i> <span>主页</span></a></li>
-						<li>
-							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>教务处理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-							<div id="subPages" class="collapse ">
-								<ul class="nav">
-									<li><a href="page-profile.html" class="">评教</a></li>
-									<li><a href="page-login.html" class="">选课</a></li>
-									<li><a href="page-lockscreen.html" class="">还有啥?</a></li>
-								</ul>
-							</div>
-						</li>
-						<li><a href="notifications.html" class=""><i class="lnr lnr-highlight"></i> <span>留言板</span></a></li>
-						<li><a href="{{asset('/config')}}" class=""><i class="lnr lnr-cog"></i> <span>账号管理</span></a></li>
-						<li><a href="icons.html" class=""><i class="lnr lnr-smile"></i> <span>关于本站</span></a></li>
+						@include('index.layout.nav')
 					</ul>
 				</nav>
 			</div>

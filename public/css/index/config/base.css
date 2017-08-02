@@ -1,0 +1,46 @@
+
+@media(min-width: 992px){
+	.info
+	{
+	    margin: 0 150px;
+	}
+}
+@media (min-width: 768px)
+{
+	.config-box
+	{
+		padding: 30px 0;
+		border-bottom: 1px solid #ebeef5;
+
+	}
+	.config-pen
+	{
+		display: none;
+	}
+	.config-box:hover > .col-sm-10 > .config-pen
+	{
+		display: block;
+	}
+}
+.config-pen
+{
+    float: left;
+}
+.the-data
+{
+    display: block;
+    float: left;
+    padding-right: 50px;
+}
+.config-input
+{
+	display: none;
+}
+.ajax-danger
+{
+	display: none;
+}
+.ajax-success
+{
+	display: none;
+}

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Routing\Redirector;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -19,8 +20,11 @@ class LoginController extends Controller
 		    return $user->inUser($request);
 		}
 		return view('auth/sign');
-		
-    	
+    }
+    public function logout(Request $request)
+    {
+    	Auth::logout();
+    	return redirect()->route('login');
     }
     protected function isVal($request)
     {

@@ -21,7 +21,7 @@
 		    </div>
 		@endif
 	<div class="form-group">
-		<label for="remember"><input type="checkbox" name="remember" id="remember"> 记住我</label>
+		<label for="remember"><input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> 记住我</label>
 	</div>
 	<div class="form-group">
 		<p>没有注册？现在 <a href="{{url('/register')}}">注册</a> | <a href="{{url('/forgot')}}">忘记密码？点这里</a></p>

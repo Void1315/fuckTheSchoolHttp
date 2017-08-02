@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth'],function()
 {
 	Route::any('/index','Index\IndexController@index');
 	Route::any('/config','Index\ConfigController@index');
-	// Route::any('')
+	Route::get('/logout','Auth\LoginController@logout');
 });
 
 

@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','stu_num','stu_passwd'
+        'name', 'email','password','stu_num','stu_passwd'
     ];
 
     /**
@@ -54,5 +54,10 @@ class User extends Authenticatable
         {
             return Redirect::back()->withInput()->withErrors('邮箱或密码错误');
         }
+    }
+    public function updateUser($request)
+    {
+        User::where('id',Auth::id())->update($request->except('_token'));
+        echo '您的信息以保存！';
     }
 }

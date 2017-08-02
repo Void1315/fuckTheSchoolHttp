@@ -11,6 +11,7 @@
 							<div class="form-group the-from-div ">
 								<label for="name" class="">选择学期</label>
 							    <select class="form-control" data='s_table' onchange="changeTable(this)">
+							    @if(isset($years))
 									@foreach($years as $year)
 									@foreach($terms as $term)
 									@if($term==1)
@@ -24,6 +25,7 @@
 									@endif
 									@endforeach
 									@endforeach
+								@endif
 							    </select>
 							</div>
 							<div class="form-group the-from-div">
@@ -49,28 +51,30 @@
 							    </tr>
 							</thead>
 							<tbody>
-						    @foreach($results as $result)
-    				  		@if($result[8]==0)
-				  			<tr class="danger">
-					  		@else
-						  		<tr>
-						  	@endif
-							@foreach($result as $i)
-							@if(in_array($loop->index,[1,3,5,6,8]))
-									<td>
-										{{$i}}
-									</td>
-								@endif
-							@endforeach
-								</tr>
-							@endforeach
+							@if(isset($results))
+							    @foreach($results as $result)
+	    				  		@if($result[8]==0)
+					  			<tr class="danger">
+						  		@else
+							  		<tr>
+							  	@endif
+								@foreach($result as $i)
+								@if(in_array($loop->index,[1,3,5,6,8]))
+										<td>
+											{{$i}}
+										</td>
+									@endif
+								@endforeach
+									</tr>
+								@endforeach
+							@endif
 							</tbody>
 						</table>
 					</div>
 				</div>
 			</div>
 	</div>
-
+	
 	<div class="panel panel-headline demo-icons" id='the_table' style="display: none;">
 		<div class="panel-body">
 			<div class="">
@@ -80,6 +84,7 @@
 						<div class="form-group the-from-div ">
 							<label for="name" class="">选择学期</label>
 						    <select class="form-control" data='b_table' onchange="changeTable(this)">
+						    @if(isset($years))
 								@foreach($years as $year)
 								@foreach($terms as $term)
 								@if($term==1)
@@ -93,6 +98,7 @@
 								@endif
 								@endforeach
 								@endforeach
+							@endif
 						    </select>
 						</div>
 						<div class="form-group the-from-div">
@@ -123,6 +129,7 @@
 						    </tr>
 						</thead>
 					  	<tbody>
+				  	@if(isset($results))
 				  		@foreach($results as $result)
 				  		@if($result[9]==0)
 				  			<tr class="danger">
@@ -138,6 +145,7 @@
 							@endforeach
 							</tr>
 						@endforeach
+					@endif
 					    </tbody>
 					</table>
 				</div>

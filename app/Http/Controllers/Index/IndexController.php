@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Index;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Result;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderShipped;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -20,7 +23,18 @@ class IndexController extends Controller
     	$results = $model_obj->getTest();
     	$years = $model_obj->getAllYears();
     	$terms = $model_obj->getAllTerms();
-    	return view('index/index')->with('results',json_decode($results->result,true))->with('time',$results->updated_at)->with('years',$years)->with('terms',$terms);
+        if($results)
+            $results_json = json_decode($results->result,true);
+        else
+            $results_json = $results;
+        if($results)
+            $updated_at = $results->updated_at;
+        else
+            $updated_at = $results;
+    	return view('index/index')->with('results',$results_json)
+        ->with('time',$updated_at)->with('index','active')
+        ->with('years',$years)->with('nav',$this->navSelect('index'))
+        ->with('terms',$terms)->with('user',Auth::user());
     }
     protected function returnData($request,$model_obj)
     {
