@@ -16,7 +16,7 @@ class ConfigController extends Controller
     		return $this->saveData($request);
     	}
     	return view('index.config')
-    	->with('nav',$this->navSelect('cofig'))->with('user',Auth::user());
+    	->with('nav',$this->navSelect('edu_eval'))->with('user',Auth::user());
     }
 
     protected function saveData($request)

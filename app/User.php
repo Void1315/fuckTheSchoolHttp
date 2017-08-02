@@ -58,6 +58,6 @@ class User extends Authenticatable
     public function updateUser($request)
     {
         User::where('id',Auth::id())->update($request->except('_token'));
-        echo '您的信息以保存！';
+        echo json_encode("您的信息以保存!");
     }
 }

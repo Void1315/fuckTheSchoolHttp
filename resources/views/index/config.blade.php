@@ -11,16 +11,6 @@
 				<div class="info">
 				<br>
 					<form  role="form" class="form-horizontal" id='config-form'>
-					    <div class="alert alert-danger ajax-danger">
-					        <ul>
-				                <li></li>
-					        </ul>
-					    </div>
-					    <div class="alert alert-success ajax-success">
-					        <ul>
-				                <li></li>
-					        </ul>
-					    </div>
 					{{ csrf_field() }}
 						<div class="form-group config-box">
 							<label for="name" class="col-sm-2 control-label">名称</label>
@@ -96,20 +86,41 @@
 		{
 			url:"{{url('/config')}}",
 			type:"post",
+			dataType: "json",
 			data:$('#config-form').serialize(),
 			success:function(msg)
 			{
-				$('.ajax-success').css('display','block');
-				$('.ajax-success > ul > li')[0].innerHTML = msg
+				addAlertSuccess($('#config-form'),msg)
 			},
 			error:function(msg)
 			{
 				msg = JSON.parse(msg.responseText)
-				$('.ajax-danger').css('display','block');
-				$('.ajax-danger > ul > li')[0].innerHTML = msg.name
-				console.log(msg.name)
+				addAlertError($('#config-form'),msg)
+				
 			},
 		})
+	}
+	function addAlertError($obj,text)
+	{
+		$obj.prepend(
+			" <div class='alert alert-danger  alert-dismissable'>"
+						   +"<button type='button' class='close' data-dismiss='alert'"
+	                    	+"aria-hidden='true'>"
+	                    	+"&times;</button>"
+	                    	+text
+	                    	+"</div>"
+			)
+	}
+	function addAlertSuccess($obj,text)
+	{
+		$obj_ = $obj.prepend(
+			" <div class='alert alert-success  alert-dismissable'>"
+						   +"<button type='button' class='close' data-dismiss='alert'"
+	                    	+"aria-hidden='true'>"
+	                    	+"&times;</button>"
+	                    	+text
+	                    	+"</div>"
+			)
 	}
 </script>
 @endsection
