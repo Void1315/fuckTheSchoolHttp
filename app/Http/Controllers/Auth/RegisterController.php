@@ -30,7 +30,7 @@ class RegisterController extends Controller
 			'password' =>'required|min:6|max:20',
 			'repassword'=>'same:password',
 			'stu_num'=>'required|min:10',
-			'stu_passwd'=>'required'
+			'stu_passwd'=>'required|max:25',
 			]);
     }
 }

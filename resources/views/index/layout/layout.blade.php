@@ -27,6 +27,8 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('/css/table/jquery.dataTables.css')}}">
 	<script type="text/javascript" charset="utf8" src="{{asset('/js/table/jquery.dataTables.js')}}"></script>
 	<link rel="stylesheet" type="text/css" href="{{asset('/css/index/base.css')}}">
+	<script type="text/javascript" src="{{asset('js/layer/layer.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/index/layout.js')}}"></script>
 </head>
 <body>
 	<!-- WRAPPER -->
@@ -55,7 +57,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('img/index/user.png')}}" class="img-circle" alt="Avatar"> <span>{{$user->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="{{asset('/config')}}"><i class="lnr lnr-cog"></i> <span>账号设置</span></a></li>
-								<li><a href="{{ route('logout') }}"><i class="lnr lnr-exit"></i> <span>退出</span></a></li>
+								<li><a href="####" onclick="isLogout()"><i class="lnr lnr-exit"></i> <span>退出</span></a></li>
 							</ul>
 						</li>
 					</ul>
@@ -102,8 +104,15 @@
 	<script src="{{asset('/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
 	<script src="{{asset('/assets/vendor/chartist/js/chartist.min.js')}}"></script>
 	<script src="{{asset('/assets/scripts/klorofil-common.js')}}"></script>
-	
-	
+	<script type="text/javascript">
+		function isLogout()//是否退出
+		{
+			layer.confirm('是否退出?', {icon: 3, title:'提示'}, function(index){
+			  layer.close(index);
+			  window.location.href="{{url('/logout')}}"; 
+			});
+		}
+	</script>
 </body>
 
 </html>

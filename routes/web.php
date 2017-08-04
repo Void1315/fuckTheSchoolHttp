@@ -24,7 +24,10 @@ Route::group(['middleware' => 'auth'],function()
 {
 	Route::any('/index','Index\IndexController@index');
 	Route::any('/config','Index\ConfigController@index');
+	Route::post('/config/stupasswd','Index\ConfigController@stuPasswd');
+	Route::post('/auth','Index\ConfigController@auth');
 	Route::get('/logout','Auth\LoginController@logout');
+	Route::any('/message','Index\ConfigController@index');
 });
 
 

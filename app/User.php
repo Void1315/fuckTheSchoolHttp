@@ -60,4 +60,12 @@ class User extends Authenticatable
         User::where('id',Auth::id())->update($request->except('_token'));
         echo json_encode("您的信息以保存!");
     }
+    public function getPasswd()
+    {
+        return User::where('id',Auth::id())->first()->password;
+    }
+    public function getStuPasswd()
+    {
+        return User::where('id',Auth::id())->first()->stu_passwd;
+    }
 }
