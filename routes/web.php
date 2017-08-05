@@ -27,7 +27,8 @@ Route::group(['middleware' => 'auth'],function()
 	Route::post('/config/stupasswd','Index\ConfigController@stuPasswd');
 	Route::post('/auth','Index\ConfigController@auth');
 	Route::get('/logout','Auth\LoginController@logout');
-	Route::any('/message','Index\ConfigController@index');
+	Route::any('/message','Index\MessageController@index');
+	Route::get('/about','Index\IndexController@about');
 });
 
 

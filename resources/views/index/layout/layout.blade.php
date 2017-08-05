@@ -1,12 +1,10 @@
 <!doctype html>
 <html>
 <head>
-	<title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+	<title>查成绩beat1.0版</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	
-	
 	<!-- VENDOR CSS -->
 	<link rel="stylesheet" href="{{asset('/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('/assets/vendor/font-awesome/css/font-awesome.min.css')}}">
@@ -83,7 +81,7 @@
 				<div class="container-fluid">
 					@yield('index')
 					@yield('config')
-
+					@yield('message')
 
 				</div>
 			</div>

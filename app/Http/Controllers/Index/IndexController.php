@@ -46,4 +46,8 @@ class IndexController extends Controller
     	$the_data = json_encode(['0'=>$json->result,'1'=>$json->updated_at]);
     	echo $the_data;
     }
+    public function about()
+    {
+        return view('index.about');
+    }
 }
