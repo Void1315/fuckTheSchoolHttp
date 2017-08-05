@@ -23,16 +23,21 @@ DROP TABLE IF EXISTS `messages`;
 CREATE TABLE `messages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `u_id` int(11) NOT NULL,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `reply` int(11) NOT NULL,
+  `title` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '标题',
+  `content` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '内容',
+  `agree` int(11) DEFAULT '0' COMMENT '赞同',
+  `contra` int(11) DEFAULT '0' COMMENT '反对',
+  `reply` int(11) NOT NULL COMMENT '回复',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `messages_id_index` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `messages` */
+
+insert  into `messages`(`id`,`u_id`,`title`,`content`,`agree`,`contra`,`reply`,`created_at`,`updated_at`,`deleted_at`) values (1,9,'Panel Headline','一二三四五六七八九十',0,0,0,'2017-08-05 16:09:24','2017-08-05 16:09:26',NULL),(2,9,'Panel Headline','一二三四五六七八九十',0,0,0,'2017-08-05 16:09:24','2017-08-05 16:09:26',NULL),(3,9,'Panel Headline','一二三四五六七八九十',0,0,0,'2017-08-05 16:09:24','2017-08-05 16:09:26',NULL),(4,9,'Panel Headline','一二三四五六七八九十',0,0,0,'2017-08-05 16:27:16','2017-08-05 16:27:22',NULL),(5,9,'一二三四五六七八九十','一二三四五六七八九十',0,0,0,'2017-08-05 16:27:18','2017-08-05 16:27:25',NULL),(6,9,'Panel Headline','一二三四五六七八九十',0,0,0,'2017-08-05 16:27:19','2017-08-05 16:27:23',NULL),(7,9,'一二三四五六七八九十','一二三四五六七八九十',0,0,0,'2017-08-05 16:27:20','2017-08-05 16:27:26',NULL);
 
 /*Table structure for table `migrations` */
 
