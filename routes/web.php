@@ -22,7 +22,7 @@ Route::group(['namespace' => 'Auth','middleware' => 'web','middleware' => 'login
 
 Route::group(['middleware' => 'auth'],function()
 {
-	Route::any('/index','Index\IndexController@index');
+	Route::any('/','Index\IndexController@index');
 	Route::any('/config','Index\ConfigController@index');
 	Route::post('/config/stupasswd','Index\ConfigController@stuPasswd');
 	Route::post('/auth','Index\ConfigController@auth');

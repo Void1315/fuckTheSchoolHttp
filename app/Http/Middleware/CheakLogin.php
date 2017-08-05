@@ -18,7 +18,7 @@ class CheakLogin
     {
         if(Auth::check())
         {
-            return redirect('index');
+            return redirect('/');
         }
         else
         {

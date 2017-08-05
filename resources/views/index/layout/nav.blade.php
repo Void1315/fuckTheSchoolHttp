@@ -1,5 +1,5 @@
 
-<li><a href="{{url('/index')}}" class="{{$nav['index'] or ''}}"><i class="lnr lnr-home"></i> <span>主页</span></a></li>
+<li><a href="{{url('/')}}" class="{{$nav['index'] or ''}}"><i class="lnr lnr-home"></i> <span>主页</span></a></li>
 	<li>
 		<a href="#subPages" data-toggle="collapse" class="{{$nav['edu']['eval'] or 'collapsed'}}"><i class="lnr lnr-file-empty"></i> <span>教务处理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 		<div id="subPages" class="collapse {{$nav['edu']['edu'] or ''}}">

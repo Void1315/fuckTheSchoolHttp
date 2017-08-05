@@ -48,7 +48,7 @@ class User extends Authenticatable
         $remember = $request->input('remember');
         if(Auth::attempt(['email' => $email,'password' => $password],$remember))
         {
-            return redirect('/index');
+            return redirect('/');
         }
         else
         {
