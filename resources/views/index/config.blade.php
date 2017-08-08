@@ -19,11 +19,9 @@
 									{{$user->name}}
 								</span>
 								<span class="control-label config-pen">
-									<button class="btn btn-link" type="button">
-										<span class="lnr lnr-pencil">修改</span>
-									</button>
+									<span class="lnr lnr-pencil" onclick="config_click(this)">修改</span>
 								</span>
-								<input type="text" class="form-control config-input" name='name' value="{{$user->name}}" id="name">
+								<input type="text" class="form-control config-input" name='name' value="{{$user->name}}" id="name" onblur="input_blur(this)">
 							</div>
 						</div>
 						<div class="form-group config-box">
@@ -40,10 +38,10 @@
 								<span class="control-label the-data">
 									{{$user->stu_num}}
 								</span>
-								<button class="btn btn-link" type="button">
-									<span class="lnr lnr-pencil">修改</span>
-								</button>
-								<input type="text" class="form-control config-input" name='stu_num' value="{{$user->stu_num}}" id="stu_num">
+								<span class="control-label config-pen">
+									<span class="lnr lnr-pencil" onclick="config_click(this)">修改</span>
+								</span>
+								<input type="text" class="form-control config-input" name='stu_num' value="{{$user->stu_num}}" id="stu_num" onblur="input_blur(this)">
 							</div>
 						</div>
 					</form>
@@ -55,10 +53,10 @@
 								<span class="control-label the-data">
 									**********
 								</span>
-								<button class="btn btn-link" type="button">
-									<span class="lnr lnr-pencil">修改</span>
-								</button>
-								<input type="text" class="form-control config-input" name='stu_passwd' id="stu_passwd">
+								<span class="control-label config-pen">
+									<span class="lnr lnr-pencil" onclick="config_stu(this)">修改</span>
+								</span>
+								<input type="text" class="form-control config-input" name='stu_passwd' id="stu_passwd" onblur="input_blur(this)">
 							</div>
 						</div>
 					</form>
@@ -72,29 +70,53 @@ window.onload = function()
 {
 	$a_list = $('.config-pen>button')
 	$input_list = $('.config-input')
-	$input_list.blur(function()//失去焦点
+
+	// $input_list.blur(function()//失去焦点
+	// {
+	// 	$(this).css('display','none')
+	// 	$(this).prev().css('display','')
+	// 	$(this).prev().prev().css('display','block')
+	// 	if($(this).attr("id")!='stu_passwd')
+	// 		post_ajax(url="{{url('/config')}}",this)
+	// 	else
+	// 		post_ajax(url="{{url('/config/stupasswd')}}",this,"stu-from")
+	// })
+	// $a_list.click(function()//修改事件
+	// {
+	// 	if($(this).attr("id")!='a_passwd')
+	// 	{
+	// 		$input = $(this).parent().next()
+	// 		$input.css('display','block')
+	// 		$input.focus()
+	// 		$(this).parent().prev().css('display','none')
+	// 		$(this).parent().css('display','none')
+	// 	}
+
+	// })
+}
+	function input_blur(obj)
 	{
-		$(this).css('display','none')
-		$(this).prev().css('display','')
-		$(this).prev().prev().css('display','block')
-		if($(this).attr("id")!='stu_passwd')
-			post_ajax(url="{{url('/config')}}",this)
+		$(obj).css('display','none')
+		$(obj).prev().css('display','')
+		$(obj).prev().prev().css('display','block')
+		if($(obj).attr("id")!='stu_passwd')
+			post_ajax(url="{{url('/config')}}",obj)
 		else
-			post_ajax(url="{{url('/config/stupasswd')}}",this,"stu-from")
-	})
-	$a_list.click(function()//修改事件
+			post_ajax(url="{{url('/config/stupasswd')}}",obj,"stu-from")
+	}
+
+	function config_click(obj)
 	{
-		if($(this).attr("id")!='a_passwd')
+		//修改事件
+		if($(obj).attr("id")!='a_passwd')
 		{
-			$input = $(this).parent().next()
+			$input = $(obj).parent().next()
 			$input.css('display','block')
 			$input.focus()
-			$(this).parent().prev().css('display','none')
-			$(this).parent().css('display','none')
+			$(obj).parent().prev().css('display','none')
+			$(obj).parent().css('display','none')
 		}
-
-	})
-}
+	}
 	function stu_pass(data)
 	{
 		$input = $('#stu_passwd')
@@ -105,7 +127,7 @@ window.onload = function()
 		$input.prev().prev().css('display','none')
 		$input.prev().css('display','none')
 	}
-	$('#a_passwd').click(function()
+	function config_stu()
 	{
 		layer.prompt({
 			title: '输入您的登录密码:', 
@@ -134,8 +156,7 @@ window.onload = function()
 				})
 			  },
 			);
-
-	})
+	}
 	function post_ajax(url,obj,from='config-form')
 	{
 		$.ajax(
