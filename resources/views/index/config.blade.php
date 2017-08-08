@@ -19,7 +19,7 @@
 									{{$user->name}}
 								</span>
 								<span class="control-label config-pen">
-									<a class="lnr lnr-pencil">修改</a>
+									<a class="lnr lnr-pencil" >修改</a>
 								</span>
 								<input type="text" class="form-control config-input" name='name' value="{{$user->name}}" id="name" onblur="input_blur(this)">
 							</div>
@@ -39,7 +39,7 @@
 									{{$user->stu_num}}
 								</span>
 								<span class="control-label config-pen">
-									<span class="lnr lnr-pencil" onclick="config_click(this)">修改</span>
+									<a class="lnr lnr-pencil" onclick="config_click(this)">修改</a>
 								</span>
 								<input type="text" class="form-control config-input" name='stu_num' value="{{$user->stu_num}}" id="stu_num" onblur="input_blur(this)">
 							</div>
@@ -54,7 +54,7 @@
 									**********
 								</span>
 								<span class="control-label config-pen">
-									<span class="lnr lnr-pencil" onclick="config_stu(this)">修改</span>
+									<a class="lnr lnr-pencil" onclick="config_stu(this)">修改</a>
 								</span>
 								<input type="text" class="form-control config-input" name='stu_passwd' id="stu_passwd" onblur="input_blur(this)">
 							</div>
@@ -66,46 +66,6 @@
 	</div>
 </div>
 <script type="text/javascript">
-window.onload = function()
-{
-	$a_list = $('.config-pen>button')
-	$input_list = $('.config-input')
-
-	// $input_list.blur(function()//失去焦点
-	// {
-	// 	$(this).css('display','none')
-	// 	$(this).prev().css('display','')
-	// 	$(this).prev().prev().css('display','block')
-	// 	if($(this).attr("id")!='stu_passwd')
-	// 		post_ajax(url="{{url('/config')}}",this)
-	// 	else
-	// 		post_ajax(url="{{url('/config/stupasswd')}}",this,"stu-from")
-	// })
-	// $a_list.click(function()//修改事件
-	// {
-	// 	if($(this).attr("id")!='a_passwd')
-	// 	{
-	// 		$input = $(this).parent().next()
-	// 		$input.css('display','block')
-	// 		$input.focus()
-	// 		$(this).parent().prev().css('display','none')
-	// 		$(this).parent().css('display','none')
-	// 	}
-
-	// })
-	$('.lnr-pencil').on('click',function()
-	{
-		//修改事件
-		if($(this).attr("id")!='a_passwd')
-		{
-			$input = $(this).parent().next()
-			$input.css('display','block')
-			$input.focus()
-			$(this).parent().prev().css('display','none')
-			$(this).parent().css('display','none')
-		}
-	})
-}
 
 	function input_blur(obj)
 	{
@@ -167,7 +127,7 @@ window.onload = function()
 						layer.msg(data.name)
 					}
 				})
-			  },
+			  }
 			);
 	}
 	function post_ajax(url,obj,from='config-form')
