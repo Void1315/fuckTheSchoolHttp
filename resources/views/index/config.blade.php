@@ -19,7 +19,7 @@
 									{{$user->name}}
 								</span>
 								<span class="control-label config-pen">
-									<a class="lnr lnr-pencil" >修改</a>
+									<a class="lnr lnr-pencil">修改</a>
 								</span>
 								<input type="text" class="form-control config-input" name='name' value="{{$user->name}}" id="name" onblur="input_blur(this)">
 							</div>
@@ -67,6 +67,18 @@
 </div>
 <script type="text/javascript">
 
+
+$('.lnr-pencil').on('click',function()
+{
+	if($(this).attr("id")!='a_passwd')
+		{
+			$input = $(this).parent().next()
+			$input.css('display','block')
+			$input.focus()
+			$(this).parent().prev().css('display','none')
+			$(this).parent().css('display','none')
+		}
+})
 	function input_blur(obj)
 	{
 		$(obj).css('display','none')
