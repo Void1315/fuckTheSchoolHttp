@@ -18,6 +18,8 @@ Route::group(['namespace' => 'Auth','middleware' => 'web','middleware' => 'login
 	Route::any('/login','LoginController@index');
 	Route::any('/register','RegisterController@index');
 	Route::any('/forgot','ForgotController@index');
+	Route::get('/geet','LoginController@geet');
+	Route::post('/validity','RegisterController@isRegister');
 });
 
 Route::group(['middleware' => 'auth'],function()

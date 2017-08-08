@@ -1,0 +1,19 @@
+.message-item
+{
+
+}
+.message-serch
+{
+	align-items: center;
+}
+.serch-box
+{
+	display: flex;
+	justify-content: center;
+}
+@media(max-width: 500px){
+	.serch-box
+	{
+		flex-wrap: wrap;
+	}
+}

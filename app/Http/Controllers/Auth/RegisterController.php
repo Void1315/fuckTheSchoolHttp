@@ -22,10 +22,18 @@ class RegisterController extends Controller
     	}
     	return view('auth/register');
     }
+    public function isRegister(Request $request)
+    {
+        $user_obj = new User();
+        if(!$user_obj->isRegister($request))
+            echo $this->goodJson('可以注册');
+        else
+            echo $this->badJson('已经被注册');
+    }
     public function isVal($request)
     {
 		$this->validate($request,[
-			'name'=>'required|string|max:20',
+			'name'=>'required|string|min:2|max:20',
 			'email'=>'required|email|max:35',
 			'password' =>'required|min:6|max:20',
 			'repassword'=>'same:password',

@@ -68,4 +68,16 @@ class User extends Authenticatable
     {
         return User::where('id',Auth::id())->first()->stu_passwd;
     }
+    public function isRegister($request)
+    {
+        $email = $request->input('email');
+        if($this->where('email',$email)->first())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

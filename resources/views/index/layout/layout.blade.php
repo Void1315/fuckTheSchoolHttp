@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<!-- VENDOR CSS -->
-	<link rel="stylesheet" href="{{asset('/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 	<link rel="stylesheet" href="{{asset('/assets/vendor/font-awesome/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{asset('/assets/vendor/linearicons/style.css')}}">
 	<link rel="stylesheet" href="{{asset('/assets/vendor/chartist/css/chartist-custom.css')}}">
@@ -89,12 +89,13 @@
 		</div>
 		<!-- END MAIN -->
 		<div class="clearfix"></div>
-		<footer>
+		
+	</div>
+	<footer>
 			<div class="container-fluid">
 				<p class="copyright">&copy; 2017 <a href="#" target="_blank">Theme I Need</a>. All Rights Reserved. More Templates  - Collect from </p>
 			</div>
 		</footer>
-	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
 	<script src="{{asset('js/bootstrap.min.js')}}"></script>

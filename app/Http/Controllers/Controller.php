@@ -48,4 +48,16 @@ class Controller extends BaseController
     	}
 	    return $this->nav;
     }
+    public function goodJson($str)
+    {
+        $str = is_array($str)?$str:['text'=>$str];
+        $str = array_merge($str,['type'=>'success']);
+        return json_encode($str);
+    }
+    public function badJson($str)
+    {
+        $str = is_array($str)?$str:['text'=>$str];
+        $str = array_merge($str,['type'=>'error']);
+        return json_encode($str);
+    }
 }

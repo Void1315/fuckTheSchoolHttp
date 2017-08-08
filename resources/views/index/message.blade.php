@@ -1,7 +1,27 @@
 @extends('index.layout.layout')
 @section('message')
+<link rel="stylesheet" type="text/css" href="{{url('css/index/message/message.css')}}">
 	<div class="main-content">
 		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-heading serch-box">
+						<div class="message-item clearfix ">
+							<div class="col-lg-8">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="搜索留言" aria-label="搜索留言">
+									<span class="input-group-btn">
+										<button class="btn btn-primary" type="button">走你</button>
+									</span>
+								</div>
+							</div>
+						</div>
+							<button class="btn btn-default" type="button" onclick="wirteMessage()">
+								写留言
+							</button>
+					</div>
+				</div>
+			</div>
 			@foreach($messages as $message)
 				@php
 					if(!isset($index)||$index==0)
@@ -56,4 +76,14 @@
 			@endforeach
 		</div>
 	</div>
+	<script type="text/javascript">
+		function wirteMessage()
+		{
+			index = layer.open({
+				type:1,
+				content:,
+				
+			})
+		}
+	</script>
 @endsection
