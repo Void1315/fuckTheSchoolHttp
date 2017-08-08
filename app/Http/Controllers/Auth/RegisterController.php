@@ -18,8 +18,8 @@ class RegisterController extends Controller
     		$this->isVal($request);#看看值是否合理
     		$user_obj = new User();
     		$user_obj->register($request);
-            Mail::to($request->user())->send(new OrderShipped(0));
-            return view('index/index');
+            Mail::to($request->email)->send(new OrderShipped(0));
+            return redirect('/');
     	}
     	return view('auth/register');
     }

@@ -19,7 +19,9 @@
 									{{$user->name}}
 								</span>
 								<span class="control-label config-pen">
-									<a href="####" class="lnr lnr-pencil">修改</a>
+									<button class="btn btn-link">
+										<a href="####" class="lnr lnr-pencil">修改</a>
+									</button>
 								</span>
 								<input type="text" class="form-control config-input" name='name' value="{{$user->name}}" id="name">
 							</div>

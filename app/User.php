@@ -39,7 +39,10 @@ class User extends Authenticatable
 
     public function register($request)
     {
+        $email = $request->input('email');
+        $password = $request->input('password');
         User::create(Input::all())->update(['password' => Hash::make($request->input('password'))]);
+        Auth::attempt(['email' => $email, 'password' => $password]);
     }
     public function inUser($request)
     {
