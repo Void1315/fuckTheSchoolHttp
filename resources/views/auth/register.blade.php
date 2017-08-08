@@ -1,6 +1,6 @@
 @extends('auth.layout.auth')
 @section('register')
-<form action="{{url('register')}}" class="fh5co-form animate-box" data-animate-effect="fadeInRight" method="post">
+<form action="{{url('register')}}" class="fh5co-form animate-box" data-animate-effect="fadeInRight" method="post" id='regist-form'>
  	{{ csrf_field() }}
 	<h2>注册</h2>
 	<div class="form-group">
@@ -77,7 +77,7 @@
 		}
 		else
 		{
-			$('#register-sub').submit()
+			$('#regist-form').submit()
 		}
 	})
 </script>
