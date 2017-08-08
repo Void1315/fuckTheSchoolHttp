@@ -1,9 +1,5 @@
-b_name = false;
 b_email = false;
-b_passwd = false;
-b_rePasswd = false;
-b_stunum = false;
-b_stuPasswd = true;
+
 
 
 function isEmail(str)//是否是邮箱
@@ -23,7 +19,7 @@ function isPasswd(str)//密码6-20位
 }
 function isRePasswd(str,str1)
 {
-	return (str==str);
+	return (str==str1);
 }
 function isStunum(str)
 {
@@ -61,5 +57,4 @@ function isRegister(str,obj)//邮箱是否被注册
 			},
 		})
 	}
-	// console.log(str)
 }

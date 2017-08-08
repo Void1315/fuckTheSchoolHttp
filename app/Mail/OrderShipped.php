@@ -26,14 +26,16 @@ class OrderShipped extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build($email=null)
     {
         switch ($this->index) {
             case 0:
                 return $this->view('mail.join');
                 break;
             default:
-                return $this->view('mail.reset')->with('passwd','123456');
+                $code = rand(5000,10000);
+                session($email,$code);
+                return $this->view('mail.reset')->with('code',$code);
                 break;
         }
         

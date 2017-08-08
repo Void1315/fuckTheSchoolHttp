@@ -76,5 +76,6 @@
 	<!-- Main JS -->
 	<script src="{{asset('js/auth/main.js')}}"></script>
 	</body>
+	
 </html>
 

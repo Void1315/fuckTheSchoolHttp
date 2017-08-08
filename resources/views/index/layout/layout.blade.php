@@ -27,6 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('/css/index/base.css')}}">
 	<script type="text/javascript" src="{{asset('js/layer/layer.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/index/layout.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/base.js')}}"></script>
 </head>
 <body>
 	<!-- WRAPPER -->

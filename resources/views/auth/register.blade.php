@@ -46,31 +46,32 @@
 <script type="text/javascript">
 	$('#register-sub').click(function()
 	{
-		isName($('#name').val())
-		isPasswd($('#password').val())
-		isRePasswd($('#password').val(),$('#re-password').val())
-		isStunum($('#stu_num').val())
+		b_name = isName($('#name').val())
+		b_passwd = isPasswd($('#password').val())
+		b_rePasswd = isRePasswd($('#password').val(),$('#re-password').val())
+		b_stunum = isStunum($('#stu_num').val())
+		b_stuPasswd = true
 		if(!b_name)
 		{
 			layer.msg('昵称不合法')
 		}
-		else if(b_email)
+		else if(!b_email)
 		{
 			layer.msg('邮箱不合法')
 		}
-		else if(b_passwd)
+		else if(!b_passwd)
 		{
 			layer.msg('密码不合法')
 		}
-		else if(b_rePasswd)
+		else if(!b_rePasswd)
 		{
 			layer.msg('两次密码不一致')
 		}
-		else if(b_stunum)
+		else if(!b_stunum)
 		{
 			layer.msg('学号不符合规范')
 		}
-		else if(b_stuPasswd)
+		else if(!b_stuPasswd)
 		{
 			layer.msg('校园网密码不合法')
 		}
