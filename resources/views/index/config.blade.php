@@ -19,7 +19,7 @@
 									{{$user->name}}
 								</span>
 								<span class="control-label config-pen">
-									<span class="lnr lnr-pencil" onclick="config_click(this)">修改</span>
+									<span class="lnr lnr-pencil">修改</span>
 								</span>
 								<input type="text" class="form-control config-input" name='name' value="{{$user->name}}" id="name" onblur="input_blur(this)">
 							</div>
