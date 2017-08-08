@@ -68,8 +68,8 @@
 	</div>
 </div>
 <script type="text/javascript">
-
-
+window.onload = function()
+{
 	$a_list = $('.config-pen>button')
 	$input_list = $('.config-input')
 	$input_list.blur(function()//失去焦点
@@ -94,6 +94,7 @@
 		}
 
 	})
+}
 	function stu_pass(data)
 	{
 		$input = $('#stu_passwd')
