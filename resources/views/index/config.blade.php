@@ -94,6 +94,18 @@ window.onload = function()
 
 	// })
 }
+$('.lnr-pencil').on('click',function()
+	{
+		//修改事件
+		if($(this).attr("id")!='a_passwd')
+		{
+			$input = $(this).parent().next()
+			$input.css('display','block')
+			$input.focus()
+			$(this).parent().prev().css('display','none')
+			$(this).parent().css('display','none')
+		}
+	})
 	function input_blur(obj)
 	{
 		$(obj).css('display','none')
