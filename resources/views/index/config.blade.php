@@ -93,8 +93,7 @@ window.onload = function()
 	// 	}
 
 	// })
-}
-$('.lnr-pencil').on('click',function()
+	$('.lnr-pencil').on('click',function()
 	{
 		//修改事件
 		if($(this).attr("id")!='a_passwd')
@@ -106,6 +105,8 @@ $('.lnr-pencil').on('click',function()
 			$(this).parent().css('display','none')
 		}
 	})
+}
+
 	function input_blur(obj)
 	{
 		$(obj).css('display','none')
