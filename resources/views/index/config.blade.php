@@ -19,8 +19,8 @@
 									{{$user->name}}
 								</span>
 								<span class="control-label config-pen">
-									<button class="btn btn-link">
-										<a href="####" class="lnr lnr-pencil">修改</a>
+									<button class="btn btn-link" type="button">
+										<span class="lnr lnr-pencil">修改</span>
 									</button>
 								</span>
 								<input type="text" class="form-control config-input" name='name' value="{{$user->name}}" id="name">
@@ -40,9 +40,9 @@
 								<span class="control-label the-data">
 									{{$user->stu_num}}
 								</span>
-								<span class="control-label config-pen">
-									<a href="####" class="lnr lnr-pencil">修改</a>
-								</span>
+								<button class="btn btn-link" type="button">
+									<span class="lnr lnr-pencil">修改</span>
+								</button>
 								<input type="text" class="form-control config-input" name='stu_num' value="{{$user->stu_num}}" id="stu_num">
 							</div>
 						</div>
@@ -55,9 +55,9 @@
 								<span class="control-label the-data">
 									**********
 								</span>
-								<span class="control-label config-pen">
-									<a href="####" class="lnr lnr-pencil" id='a_passwd'>修改</a>
-								</span>
+								<button class="btn btn-link" type="button">
+									<span class="lnr lnr-pencil">修改</span>
+								</button>
 								<input type="text" class="form-control config-input" name='stu_passwd' id="stu_passwd">
 							</div>
 						</div>
@@ -70,7 +70,7 @@
 <script type="text/javascript">
 
 
-	$a_list = $('.config-pen>a')
+	$a_list = $('.config-pen>button')
 	$input_list = $('.config-input')
 	$input_list.blur(function()//失去焦点
 	{
