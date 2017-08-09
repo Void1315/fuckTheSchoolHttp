@@ -160,7 +160,7 @@ $('.lnr-pencil').on('click',function()
 									**********
 								</span>
 								<span class="control-label config-pen">
-									<a class="lnr lnr-pencil" onclick="alert(1)">修改</a>
+									<a class="lnr lnr-pencil" onclick="test()">修改</a>
 								</span>
 								<input type="text" class="form-control config-input" name='stu_passwd' id="stu_passwd" onblur="inputBlur(this)">
 							</div>
@@ -171,5 +171,10 @@ $('.lnr-pencil').on('click',function()
 		</div>
 	</div>
 </div>
-
+<script type="text/javascript">
+	function test()
+	{
+		alert("test")
+	}
+</script>
 @endsection
