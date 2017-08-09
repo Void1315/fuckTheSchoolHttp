@@ -3,7 +3,19 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/index/config/base.css')}}">
 <script type="text/javascript">
 
-
+function configClick(obj)
+	{
+		//修改事件\a
+		alert(1);
+		if($(obj).attr("id")!='a_passwd')
+		{
+			$input = $(obj).parent().next();
+			$input.css('display','block');
+			$input.focus();
+			$(obj).parent().prev().css('display','none');
+			$(obj).parent().css('display','none');
+		}
+	}
 
 
 </script>
@@ -25,7 +37,7 @@
 									{{$user->name}}
 								</span>
 								<span class="control-label config-pen">
-									<a class="lnr lnr-pencil">修改</a>
+									<a class="lnr lnr-pencil" onclick="configClick(this)">修改</a>
 								</span>
 								<input type="text" class="form-control config-input" name='name' value="{{$user->name}}" id="name" onblur="inputBlur(this)">
 							</div>
@@ -45,7 +57,7 @@
 									{{$user->stu_num}}
 								</span>
 								<span class="control-label config-pen">
-									<a class="lnr lnr-pencil"  onclick="configClick(this)">修改</a>
+									<a class="lnr lnr-pencil" onclick="configClick(this)">修改</a>
 								</span>
 								<input type="text" class="form-control config-input" name='stu_num' value="{{$user->stu_num}}" id="stu_num" onblur="inputBlur(this)">
 							</div>
@@ -72,6 +84,16 @@
 	</div>
 </div>
 <script type="text/javascript">
+	function inputBlur(obj)
+	{
+		$(obj).css('display','none');
+		$(obj).prev().css('display','');
+		$(obj).prev().prev().css('display','block');
+		if($(obj).attr("id")!='stu_passwd')
+			post_ajax(url="{{url('/config')}}",obj);
+		else
+			post_ajax(url="{{url('/config/stupasswd')}}",obj,"stu-from");
+	}
 	
 
 	function stu_pass(data)
@@ -135,29 +157,6 @@
 				addAlertError($('#config-form'),msg);
 			},
 		});
-	}
-	function inputBlur(obj)
-	{
-		$(obj).css('display','none');
-		$(obj).prev().css('display','');
-		$(obj).prev().prev().css('display','block');
-		if($(obj).attr("id")!='stu_passwd')
-			post_ajax(url="{{url('/config')}}",obj);
-		else
-			post_ajax(url="{{url('/config/stupasswd')}}",obj,"stu-from");
-	}
-	function configClick(obj)
-	{
-		//修改事件\a
-		alert(1);
-		if($(obj).attr("id")!='a_passwd')
-		{
-			$input = $(obj).parent().next();
-			$input.css('display','block');
-			$input.focus();
-			$(obj).parent().prev().css('display','none');
-			$(obj).parent().css('display','none');
-		}
 	}
 </script>
 @endsection
