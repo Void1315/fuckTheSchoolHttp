@@ -40,12 +40,12 @@ function stu_pass(data)
 	{
 		layer.prompt({
 			title: '输入您的登录密码:', 
-			formType: 0,
+			formType: 0
 			},function(pass, index){
 				index_ = layer.open({
 					type:3,
 					time: 10*1000,
-				})
+				});
 				$.ajax({
 					url:"{{url('/auth')}}",
 					data:{'_token':'{{csrf_token()}}','passwd':pass},
@@ -62,7 +62,7 @@ function stu_pass(data)
 						layer.close(index_);
 						layer.msg(data.name);
 					}
-				})
+				});
 			  }
 			);
 	}
@@ -85,7 +85,7 @@ function stu_pass(data)
 			{
 				msg = JSON.parse(msg.responseText);
 				addAlertError($('#config-form'),msg);
-			},
+			}
 		});
 	}
 </script>
