@@ -66,8 +66,10 @@ function stu_pass(data)
 			  }
 			);
 	}
-	function post_ajax(url,obj,from='config-form')
+	function post_ajax(url,obj,from)
 	{
+		if(from==undefined)
+			from ='config-form';
 		$.ajax(
 		{
 			url:url,
