@@ -11,4 +11,25 @@
 		display: flex;
 	    justify-content: space-around;
 	}
+
+}
+@media(max-width: 650px)
+{
+	.navbar-btn
+	{
+		padding: 0;
+	}
+	.medie-flex
+	{
+		display: flex;
+		justify-content: center;
+	}
+}
+@media(max-width: 770px)
+{
+	.navbar-btn
+	{
+		padding: 0;
+	}
+
 }

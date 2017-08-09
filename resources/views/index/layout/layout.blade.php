@@ -38,7 +38,7 @@
 			<div class="brand">
 				<a href="{{url('/')}}"><img src="{{asset('img/index/logo-dark.png')}}" alt="Klorofil Logo" class="img-responsive logo"></a>
 			</div>
-			<div class="container-fluid">
+			<div class="container-fluid medie-flex">
 				<div class="navbar-btn">
 					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
 				</div>
