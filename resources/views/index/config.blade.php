@@ -70,11 +70,18 @@
 
 $('.lnr-pencil').on('click',function()
 {
+	alert(1)
+	if($(this).attr("id")!='a_passwd')
+		{
+			alert(2)
 			$input = $(this).parent().next()
+			alert(3)
 			$input.css('display','block')
 			$input.focus()
 			$(this).parent().prev().css('display','none')
 			$(this).parent().css('display','none')
+			alert(4)
+		}
 })
 	function input_blur(obj)
 	{
