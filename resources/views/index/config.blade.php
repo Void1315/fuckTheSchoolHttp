@@ -21,7 +21,7 @@
 								<span class="control-label config-pen">
 									<a class="lnr lnr-pencil">修改</a>
 								</span>
-								<input type="text" class="form-control config-input" name='name' value="{{$user->name}}" id="name" onblur="input_blur(this)">
+								<input type="text" class="form-control config-input" name='name' value="{{$user->name}}" id="name" onblur="inputBlur(this)">
 							</div>
 						</div>
 						<div class="form-group config-box">
@@ -39,9 +39,9 @@
 									{{$user->stu_num}}
 								</span>
 								<span class="control-label config-pen">
-									<a class="lnr lnr-pencil" onclick="config_click(this)">修改</a>
+									<a class="lnr lnr-pencil" onclick="configClick(this)">修改</a>
 								</span>
-								<input type="text" class="form-control config-input" name='stu_num' value="{{$user->stu_num}}" id="stu_num" onblur="input_blur(this)">
+								<input type="text" class="form-control config-input" name='stu_num' value="{{$user->stu_num}}" id="stu_num" onblur="inputBlur(this)">
 							</div>
 						</div>
 					</form>
@@ -56,7 +56,7 @@
 								<span class="control-label config-pen">
 									<a class="lnr lnr-pencil" onclick="alert(1)">修改</a>
 								</span>
-								<input type="text" class="form-control config-input" name='stu_passwd' id="stu_passwd" onblur="input_blur(this)">
+								<input type="text" class="form-control config-input" name='stu_passwd' id="stu_passwd" onblur="inputBlur(this)">
 							</div>
 						</div>
 					</form>
@@ -83,7 +83,7 @@ $('.lnr-pencil').on('click',function()
 			alert(4)
 		}
 })
-	function input_blur(obj)
+	function inputBlur(obj)
 	{
 		$(obj).css('display','none')
 		$(obj).prev().css('display','')
@@ -94,9 +94,10 @@ $('.lnr-pencil').on('click',function()
 			post_ajax(url="{{url('/config/stupasswd')}}",obj,"stu-from")
 	}
 
-	function config_click(obj)
+	function configClick(obj)
 	{
-		//修改事件
+		//修改事件\a
+		alert(1)
 		if($(obj).attr("id")!='a_passwd')
 		{
 			$input = $(obj).parent().next()
