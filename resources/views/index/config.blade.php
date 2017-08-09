@@ -21,19 +21,7 @@ $('.lnr-pencil').on('click',function()
 })
 
 
-	function configClick(obj)
-	{
-		//修改事件\a
-		alert(1)
-		if($(obj).attr("id")!='a_passwd')
-		{
-			$input = $(obj).parent().next()
-			$input.css('display','block')
-			$input.focus()
-			$(obj).parent().prev().css('display','none')
-			$(obj).parent().css('display','none')
-		}
-	}
+	
 	function stu_pass(data)
 	{
 		$input = $('#stu_passwd')
@@ -136,7 +124,7 @@ $('.lnr-pencil').on('click',function()
 									{{$user->stu_num}}
 								</span>
 								<span class="control-label config-pen">
-									<a class="lnr lnr-pencil" onclick="configClick(this)">修改</a>
+									<a class="lnr lnr-pencil" id='aaas' onclick="configClick(this)">修改</a>
 								</span>
 								<input type="text" class="form-control config-input" name='stu_num' value="{{$user->stu_num}}" id="stu_num" onblur="inputBlur(this)">
 							</div>
@@ -176,6 +164,19 @@ $('.lnr-pencil').on('click',function()
 			post_ajax(url="{{url('/config')}}",obj);
 		else
 			post_ajax(url="{{url('/config/stupasswd')}}",obj,"stu-from");
+	}
+	function configClick(obj)
+	{
+		//修改事件\a
+		alert(1);
+		if($(obj).attr("id")!='a_passwd')
+		{
+			$input = $(obj).parent().next();
+			$input.css('display','block');
+			$input.focus();
+			$(obj).parent().prev().css('display','none');
+			$(obj).parent().css('display','none');
+		}
 	}
 </script>
 @endsection
