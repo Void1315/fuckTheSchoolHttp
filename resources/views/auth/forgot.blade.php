@@ -12,7 +12,7 @@
 		</div>
 	<div class="form-group">
 			<label for="stu_num" class="sr-only">学号</label>
-			<input id="stu_num" type="text" class="form-control " value="{{ old('stu_num') }}" name="stu_num" required placeholder="学号(例2016010321)" autocomplete="off">
+			<input id="stu_num" type="text" class="form-control " value="{{ old('stu_num') }}" name="stu_num"  placeholder="学号(例2016010321)" autocomplete="off">
     </div>
 	    @if (count($errors) > 0)
 		    <div class="alert alert-danger">
@@ -27,11 +27,11 @@
 			<p><a href="{{url('login')}}">登录</a> or <a href="{{url('register')}}">注册</a></p>
 		</div>
 		<div class="form-group">
-			<input type="button" id="forgotPasswd" value="发送邮件" class="btn btn-primary">
+			<input type="button" id="forgotPasswd" value="重置密码" class="btn btn-primary" onclick="sendCode()">
 		</div>
 	</form>
 <script type="text/javascript">
-	$('#forgotPasswd').click(function()
+	function sendCode()
 	{
 		if(isEmail($('#email').val())&&isStunum($('#stu_num').val()))
 		{
@@ -49,17 +49,11 @@
 					}
 					else//匹配成功
 					{
-						$('#resetPasswd').css('display','block')
-						layer.open({
-							type:1,
-							title:'重置密码',
-							content:$('#resetPasswd'),
-						})
+						layer.alert('邮件已发送，请在邮箱中确认')
 					}
 				},
 				error:function(data)
 				{
-					console.log(data)
 					data = JSON.parse(data.responseText)
 					for(var i in data)
 						addAlertError($('#forgot-form'),data[i].toString())
@@ -70,6 +64,6 @@
 		{
 			layer.msg('请按规则填写')
 		}
-	})
+	}
 </script>
 @endsection

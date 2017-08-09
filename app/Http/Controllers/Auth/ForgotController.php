@@ -36,4 +36,12 @@ class ForgotController extends Controller
 		}
 		
 	}
+	public function reset(Request $request)//重置密码页面
+	{
+		if($request->isMethod('post'))
+		{
+
+		}
+		return view('auth/reset');
+	}
 }

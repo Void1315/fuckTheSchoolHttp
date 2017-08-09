@@ -63,6 +63,7 @@
 					@yield('register')
 					@yield('sign')
 					@yield('forgot')
+					@yield('reset')
 					<!-- END Sign In Form -->
 				</div>
 			</div>

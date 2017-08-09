@@ -14,8 +14,6 @@ require_once dirname(dirname(__FILE__)) . '\Auth\class.geetestlib.php';
 class LoginController extends Controller
 {
     //
-    
-
     public function index(Request $request)
     {
     	$user = new User();

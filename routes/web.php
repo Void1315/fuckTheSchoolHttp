@@ -21,7 +21,7 @@ Route::group(['namespace' => 'Auth','middleware' => 'web','middleware' => 'login
 	Route::get('/geet','LoginController@geet');
 	Route::post('/validity','RegisterController@isRegister');
 });
-
+Route::any('/resetpsd/{s_id?}','auth\ForgotController@reset');
 Route::group(['middleware' => 'auth'],function()
 {
 	Route::any('/','Index\IndexController@index');
