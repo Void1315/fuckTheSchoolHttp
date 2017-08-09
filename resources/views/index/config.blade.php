@@ -1,70 +1,6 @@
 @extends('index.layout.layout')
 @section('config')
 <link rel="stylesheet" type="text/css" href="{{asset('css/index/config/base.css')}}">
-<div class="container">
-	<div class="">
-		<div class="panel panel-primary">
-			<div class=" panel-heading">
-				修改你的个人资料
-			</div>
-			<div class="panel-body">
-				<div class="info">
-				<br>
-					<form  role="form" class="form-horizontal" id='config-form'>
-					{{ csrf_field() }}
-						<div class="form-group config-box">
-							<label for="name" class="col-sm-2 control-label">名称</label>
-							<div class="col-sm-10">
-								<span class="control-label the-data">
-									{{$user->name}}
-								</span>
-								<span class="control-label config-pen">
-									<a class="lnr lnr-pencil">修改</a>
-								</span>
-								<input type="text" class="form-control config-input" name='name' value="{{$user->name}}" id="name" onblur="inputBlur(this)">
-							</div>
-						</div>
-						<div class="form-group config-box">
-							<label for="email" class="col-sm-2 control-label">电子邮箱</label>
-							<div class="col-sm-10">
-								<span class="control-label the-data">
-									{{$user->email}}
-								</span>
-							</div>
-						</div>
-						<div class="form-group config-box">
-							<label for="stu_num" class="col-sm-2 control-label">校园网账号</label>
-							<div class="col-sm-10">
-								<span class="control-label the-data">
-									{{$user->stu_num}}
-								</span>
-								<span class="control-label config-pen">
-									<a class="lnr lnr-pencil" onclick="configClick(this)">修改</a>
-								</span>
-								<input type="text" class="form-control config-input" name='stu_num' value="{{$user->stu_num}}" id="stu_num" onblur="inputBlur(this)">
-							</div>
-						</div>
-					</form>
-					<form role="form" class="form-horizontal" id='stu-from'>
-						{{ csrf_field() }}
-						<div class="form-group config-box">
-							<label for="stu_passwd" class="col-sm-2 control-label">校园网密码</label>
-							<div class="col-sm-10">
-								<span class="control-label the-data">
-									**********
-								</span>
-								<span class="control-label config-pen">
-									<a class="lnr lnr-pencil" onclick="alert(1)">修改</a>
-								</span>
-								<input type="text" class="form-control config-input" name='stu_passwd' id="stu_passwd" onblur="inputBlur(this)">
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 <script type="text/javascript">
 
 
@@ -171,4 +107,69 @@ $('.lnr-pencil').on('click',function()
 	}
 
 </script>
+<div class="container">
+	<div class="">
+		<div class="panel panel-primary">
+			<div class=" panel-heading">
+				修改你的个人资料
+			</div>
+			<div class="panel-body">
+				<div class="info">
+				<br>
+					<form  role="form" class="form-horizontal" id='config-form'>
+					{{ csrf_field() }}
+						<div class="form-group config-box">
+							<label for="name" class="col-sm-2 control-label">名称</label>
+							<div class="col-sm-10">
+								<span class="control-label the-data">
+									{{$user->name}}
+								</span>
+								<span class="control-label config-pen">
+									<a class="lnr lnr-pencil">修改</a>
+								</span>
+								<input type="text" class="form-control config-input" name='name' value="{{$user->name}}" id="name" onblur="inputBlur(this)">
+							</div>
+						</div>
+						<div class="form-group config-box">
+							<label for="email" class="col-sm-2 control-label">电子邮箱</label>
+							<div class="col-sm-10">
+								<span class="control-label the-data">
+									{{$user->email}}
+								</span>
+							</div>
+						</div>
+						<div class="form-group config-box">
+							<label for="stu_num" class="col-sm-2 control-label">校园网账号</label>
+							<div class="col-sm-10">
+								<span class="control-label the-data">
+									{{$user->stu_num}}
+								</span>
+								<span class="control-label config-pen">
+									<a class="lnr lnr-pencil" onclick="configClick(this)">修改</a>
+								</span>
+								<input type="text" class="form-control config-input" name='stu_num' value="{{$user->stu_num}}" id="stu_num" onblur="inputBlur(this)">
+							</div>
+						</div>
+					</form>
+					<form role="form" class="form-horizontal" id='stu-from'>
+						{{ csrf_field() }}
+						<div class="form-group config-box">
+							<label for="stu_passwd" class="col-sm-2 control-label">校园网密码</label>
+							<div class="col-sm-10">
+								<span class="control-label the-data">
+									**********
+								</span>
+								<span class="control-label config-pen">
+									<a class="lnr lnr-pencil" onclick="alert(1)">修改</a>
+								</span>
+								<input type="text" class="form-control config-input" name='stu_passwd' id="stu_passwd" onblur="inputBlur(this)">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 @endsection
