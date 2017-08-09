@@ -21,6 +21,7 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('/assets/img/favicon.png')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('/css/base.css')}}">
 	<!-- 表格排序插件 -->
+	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="{{asset('/css/table/jquery.dataTables.css')}}">
 	<script type="text/javascript" charset="utf8" src="{{asset('/js/table/jquery.dataTables.js')}}"></script>
