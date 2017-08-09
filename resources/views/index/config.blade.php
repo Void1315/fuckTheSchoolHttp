@@ -169,13 +169,13 @@ $('.lnr-pencil').on('click',function()
 	}
 	function inputBlur(obj)
 	{
-		$(obj).css('display','none')
-		$(obj).prev().css('display','')
-		$(obj).prev().prev().css('display','block')
-		if($(obj).attr("id")!='stu_passwd')
-			post_ajax(url="{{url('/config')}}",obj)
+		$(obj).css('display','none');
+		$(obj).prev().css('display','');
+		$(obj).prev().prev().css('display','block');
+		if($(obj).attr("id")!='stu_passwd');
+			post_ajax(url="{{url('/config')}}",obj);
 		else
-			post_ajax(url="{{url('/config/stupasswd')}}",obj,"stu-from")
+			post_ajax(url="{{url('/config/stupasswd')}}",obj,"stu-from");
 	}
 </script>
 @endsection
