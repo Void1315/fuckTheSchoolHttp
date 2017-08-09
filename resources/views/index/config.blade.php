@@ -54,7 +54,7 @@
 									**********
 								</span>
 								<span class="control-label config-pen">
-									<a class="lnr lnr-pencil" onclick="config_stu(this)">修改</a>
+									<a class="lnr lnr-pencil" onclick="alert(1)">修改</a>
 								</span>
 								<input type="text" class="form-control config-input" name='stu_passwd' id="stu_passwd" onblur="input_blur(this)">
 							</div>
