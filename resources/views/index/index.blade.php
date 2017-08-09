@@ -159,7 +159,7 @@
 		{
 			data = obj.value
 			$.ajax({
-				url:"{{url('index')}}",
+				url:"{{url('/')}}",
 				type:'post',
 				data:{'_token':'{{csrf_token()}}','time':data},
 				success:function(data)
