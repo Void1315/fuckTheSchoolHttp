@@ -87,7 +87,10 @@ function stu_pass(data)
 			data:$('#'+from).serialize(),
 			success:function(msg)
 			{
-				addAlertSuccess($('#config-form'),msg);
+				if(msg.type=='success')
+				{
+					addAlertSuccess($('#config-form'),msg.text);
+				}
 				val = $(obj).val();
 				$obj = $(obj).prev().prev();
 				$obj[0].innerText=val;

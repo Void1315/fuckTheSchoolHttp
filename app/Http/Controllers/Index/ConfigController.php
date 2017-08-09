@@ -28,18 +28,26 @@ class ConfigController extends Controller
     		'name'=>'required|string|max:20',
 			'stu_num'=>'required|min:10',
     		]);
-    	$user->updateUser($request);
+    	if($user->updateUser($request))
+            echo $this->goodJson("您的信息以保存!");
+        else
+        {
+            echo $this->badJson('保存失败!');
+        }
     	return ;
     }
     public function stuPasswd(Request $request)
     {
-        if(session(Auth::id()))
+        if(session('auth'))
         {
             $user = new User();
             $this->validate($request,[
                 'stu_passwd'=>'required|max:25',
                 ]);
-            $user->updateUser($request);
+            if($request->stu_passwd!=$user->getStuPasswd()&&$user->updateUser($request))
+                echo $this->goodJson('保存成功!');
+            else
+                echo $this->badJson('未修改');
             return ;
         }
        else
@@ -61,7 +69,7 @@ class ConfigController extends Controller
         $hashedPassword = $user->getPasswd();
         if (Hash::check($pass, $hashedPassword)) 
         {
-            session([Auth::id()=>1]);//开启后台
+            session(['auth'=>'1']);//开启后台
             echo $this->goodJson($stu_pass);
         }
         else
@@ -72,7 +80,7 @@ class ConfigController extends Controller
     }
     public function isAuth($stu_pass)
     {
-        if(session(Auth::id()))
+        if(session()->exists('auth'))
         {
             echo $this->goodJson(['code'=>$stu_pass]);
             return true;
