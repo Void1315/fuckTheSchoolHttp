@@ -144,7 +144,7 @@ function stu_pass(data)
 									**********
 								</span>
 								<span class="control-label config-pen">
-									<a class="lnr lnr-pencil" onclick="stu_pass(this)">修改</a>
+									<a class="lnr lnr-pencil" onclick="config_stu()">修改</a>
 								</span>
 								<input type="text" class="form-control config-input" name='stu_passwd' id="stu_passwd" onblur="inputBlur(this)">
 							</div>
