@@ -172,7 +172,7 @@ $('.lnr-pencil').on('click',function()
 		$(obj).css('display','none');
 		$(obj).prev().css('display','');
 		$(obj).prev().prev().css('display','block');
-		if($(obj).attr("id")!='stu_passwd');
+		if($(obj).attr("id")!='stu_passwd')
 			post_ajax(url="{{url('/config')}}",obj);
 		else
 			post_ajax(url="{{url('/config/stupasswd')}}",obj,"stu-from");
