@@ -16,8 +16,78 @@ function configClick(obj)
 			$(obj).parent().css('display','none');
 		}
 	}
-
-
+	function inputBlur(obj)
+	{
+		$(obj).css('display','none');
+		$(obj).prev().css('display','');
+		$(obj).prev().prev().css('display','block');
+		if($(obj).attr("id")!='stu_passwd')
+			post_ajax(url="{{url('/config')}}",obj);
+		else
+			post_ajax(url="{{url('/config/stupasswd')}}",obj,"stu-from");
+	}
+function stu_pass(data)
+	{
+		$input = $('#stu_passwd');
+		$input.css('display','block');
+		$input.val(data);
+		$input.focus();
+		
+		$input.prev().prev().css('display','none');
+		$input.prev().css('display','none');
+	}
+	function config_stu()
+	{
+		layer.prompt({
+			title: '输入您的登录密码:', 
+			formType: 0,
+			},function(pass, index){
+				index_ = layer.open({
+					type:3,
+					time: 10*1000,
+				})
+				$.ajax({
+					url:"{{url('/auth')}}",
+					data:{'_token':'{{csrf_token()}}','passwd':pass},
+					type:'post',
+					success:function(data){
+						layer.close(index_);
+						layer.msg("成功验证！");
+						layer.close(index);
+						stu_pass(data);
+					},
+					error:function(data)
+					{
+						data = JSON.parse(data.responseText);
+						layer.close(index_);
+						layer.msg(data.name);
+					}
+				})
+			  }
+			);
+	}
+	function post_ajax(url,obj,from='config-form')
+	{
+		$.ajax(
+		{
+			url:url,
+			type:"post",
+			dataType: "json",
+			data:$('#'+from).serialize(),
+			success:function(msg)
+			{
+				addAlertSuccess($('#config-form'),msg);
+				val = $(obj).val();
+				$obj = $(obj).prev().prev();
+				$obj[0].innerText=val;
+			},
+			error:function(msg)
+			{
+				msg = JSON.parse(msg.responseText);
+				addAlertError($('#config-form'),msg);
+			},
+		});
+	}
 </script>
 <div class="container">
 	<div class="">
@@ -84,79 +154,9 @@ function configClick(obj)
 	</div>
 </div>
 <script type="text/javascript">
-	function inputBlur(obj)
-	{
-		$(obj).css('display','none');
-		$(obj).prev().css('display','');
-		$(obj).prev().prev().css('display','block');
-		if($(obj).attr("id")!='stu_passwd')
-			post_ajax(url="{{url('/config')}}",obj);
-		else
-			post_ajax(url="{{url('/config/stupasswd')}}",obj,"stu-from");
-	}
+
 	
 
-	function stu_pass(data)
-	{
-		$input = $('#stu_passwd');
-		$input.css('display','block');
-		$input.val(data);
-		$input.focus();
-		
-		$input.prev().prev().css('display','none');
-		$input.prev().css('display','none');
-	}
-	function config_stu()
-	{
-		layer.prompt({
-			title: '输入您的登录密码:', 
-			formType: 0,
-			},function(pass, index){
-				index_ = layer.open({
-					type:3,
-					time: 10*1000,
-				})
-				$.ajax({
-					url:"{{url('/auth')}}",
-					data:{'_token':'{{csrf_token()}}','passwd':pass},
-					type:'post',
-					success:function(data){
-						layer.close(index_);
-						layer.msg("成功验证！");
-						layer.close(index);
-						stu_pass(data);
-					},
-					error:function(data)
-					{
-						data = JSON.parse(data.responseText);
-						layer.close(index_);
-						layer.msg(data.name);
-					}
-				})
-			  }
-			);
-	}
-	function post_ajax(url,obj,from='config-form')
-	{
-		$.ajax(
-		{
-			url:url,
-			type:"post",
-			dataType: "json",
-			data:$('#'+from).serialize(),
-			success:function(msg)
-			{
-				addAlertSuccess($('#config-form'),msg);
-				val = $(obj).val();
-				$obj = $(obj).prev().prev();
-				$obj[0].innerText=val;
-			},
-			error:function(msg)
-			{
-				msg = JSON.parse(msg.responseText);
-				addAlertError($('#config-form'),msg);
-			},
-		});
-	}
+	
 </script>
 @endsection
