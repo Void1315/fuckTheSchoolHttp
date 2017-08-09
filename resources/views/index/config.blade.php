@@ -6,7 +6,6 @@
 function configClick(obj)
 	{
 		//修改事件\a
-		alert(1);
 		if($(obj).attr("id")!='a_passwd')
 		{
 			$input = $(obj).parent().next();
@@ -21,10 +20,13 @@ function configClick(obj)
 		$(obj).css('display','none');
 		$(obj).prev().css('display','');
 		$(obj).prev().prev().css('display','block');
-		if($(obj).attr("id")!='stu_passwd')
-			post_ajax(url="{{url('/config')}}",obj);
-		else
-			post_ajax(url="{{url('/config/stupasswd')}}",obj,"stu-from");
+		if($(obj).val()!=$(obj).prev().prev()[0].innerText)
+		{
+			if($(obj).attr("id")!='stu_passwd')
+				post_ajax(url="{{url('/config')}}",obj);
+			else
+				post_ajax(url="{{url('/config/stupasswd')}}",obj,"stu-from");
+		}
 	}
 function stu_pass(data)
 	{
@@ -32,7 +34,6 @@ function stu_pass(data)
 		$input.css('display','block');
 		$input.val(data);
 		$input.focus();
-		
 		$input.prev().prev().css('display','none');
 		$input.prev().css('display','none');
 	}
@@ -50,17 +51,25 @@ function stu_pass(data)
 					url:"{{url('/auth')}}",
 					data:{'_token':'{{csrf_token()}}','passwd':pass},
 					type:'post',
+					dataType:'json',
 					success:function(data){
-						layer.close(index_);
-						layer.msg("成功验证！");
-						layer.close(index);
-						stu_pass(data);
+						if(data.type=='success')
+						{
+							layer.close(index_);
+							layer.msg("成功验证！");
+							layer.close(index);
+							stu_pass(data.text);
+						}
+						else
+						{
+							layer.msg(data.text);
+							layer.close(index_);
+						}
 					},
 					error:function(data)
 					{
-						data = JSON.parse(data.responseText);
 						layer.close(index_);
-						layer.msg(data.name);
+						layer.msg(data.text);
 					}
 				});
 			  }
@@ -85,10 +94,34 @@ function stu_pass(data)
 			},
 			error:function(msg)
 			{
-				msg = JSON.parse(msg.responseText);
-				addAlertError($('#config-form'),msg);
+				msg = JSON.parse(msg.responseText)
+				for(i in msg)
+					addAlertError($('#config-form'),msg[i]);
 			}
 		});
+	}
+	function isAuth()
+	{
+		$.ajax({
+			url:"{{url('/auth')}}",
+			type:'get',
+			dataType:'json',
+			success:function(data)
+			{
+				if(data.type=='success')
+				{
+					stu_pass(data.code);
+				}
+				else
+				{
+					config_stu();
+				}
+			},
+			error:function(data)
+			{
+				layer.msg('出现一些错误,请刷新后重试');
+			}
+		})
 	}
 </script>
 <div class="container">
@@ -144,7 +177,7 @@ function stu_pass(data)
 									**********
 								</span>
 								<span class="control-label config-pen">
-									<a class="lnr lnr-pencil" onclick="config_stu()">修改</a>
+									<a class="lnr lnr-pencil" onclick="isAuth()">修改</a>
 								</span>
 								<input type="text" class="form-control config-input" name='stu_passwd' id="stu_passwd" onblur="inputBlur(this)">
 							</div>
@@ -155,10 +188,4 @@ function stu_pass(data)
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-
-	
-
-	
-</script>
 @endsection
