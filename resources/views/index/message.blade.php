@@ -9,9 +9,9 @@
 						<div class="message-item clearfix ">
 							<div class="col-lg-8">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="搜索留言" aria-label="搜索留言">
+									<input type="text" class="form-control" placeholder="搜索留言" aria-label="搜索留言" id='serch-input'>
 									<span class="input-group-btn">
-										<button class="btn btn-primary" type="button">走你</button>
+										<button class="btn btn-primary" type="button" onclick="serch_msg($('#serch-input'))">走你</button>
 									</span>
 								</div>
 							</div>
@@ -85,6 +85,7 @@
             </div>
             <div class="modal-body">
             	<form role='form' method="post">
+            		{{ csrf_field() }}
             		<div class="form-group">
 					    <label for="title">标题</label>
 					    <input type="text" class="form-control" id="title" placeholder="请输入标题">
@@ -102,10 +103,28 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-	<script type="text/javascript">
-		function wirteMessage()
-		{
-			$('#myModal').modal()
-		}
-	</script>
+<script type="text/javascript">
+	function wirteMessage()
+	{
+		$('#myModal').modal()
+	}
+	function serch_msg($obj)
+	{
+		var str = $obj.val().trim()//去首尾空格
+		$.ajax({
+			url:"{{url('')}}",
+			type:'post',
+			dataType:'json',
+			success:function()
+			{
+
+			},
+			error:function()
+			{
+				
+			}
+		})
+
+	}
+</script>
 @endsection
