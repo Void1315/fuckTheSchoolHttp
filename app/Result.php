@@ -27,7 +27,7 @@ class Result extends Model
         $u_id = User::where('id',Auth::id())->first()->stu_num;
         return Result::where('u_id',$u_id)->get(['term'])->pluck('term')->all();
     }
-    public function getTest()
+    public function getNewResults()
     {
     	return User::where('id',Auth::id())->first()->hasManyResult()->first();
     }

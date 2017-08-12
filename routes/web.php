@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth'],function()
 	Route::get('/logout','Auth\LoginController@logout');
 	Route::any('/message','Index\MessageController@index');
 	Route::get('/about','Index\IndexController@about');
+	Route::get('/getResults','Index\IndexController@getResults');
 });
 
 
