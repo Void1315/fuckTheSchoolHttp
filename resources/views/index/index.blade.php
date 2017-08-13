@@ -284,6 +284,6 @@
 				getData_(index);
 			}
 		}
-		// ajaxGetReuslt()
+		ajaxGetReuslt()
 	</script>
 @endsection

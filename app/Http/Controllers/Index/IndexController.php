@@ -22,7 +22,6 @@ class IndexController extends Controller
     		$this->returnData($request,$model_obj);
             return;
     	}
-        echo "string";
     	$results = $model_obj->getNewResults();#获取最新成绩
     	$years = $model_obj->getAllYears();
     	$terms = $model_obj->getAllTerms();
