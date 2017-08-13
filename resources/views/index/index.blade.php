@@ -164,9 +164,11 @@
 			}
 			$select_obj.append(str)
 		}
-		function changeTable(obj)
+		function changeTable(obj,time_)
 		{
 			data = obj.value;
+			if(data==null)
+				data = time_
 			console.log(data)
 			$.ajax({
 				url:"{{url('/')}}/",
@@ -259,7 +261,7 @@
 					{
 						layer.close(index)
 						setTime()
-						changeTable($('#a_l_sel')[0])
+						changeTable($('#a_l_sel').children()[0],'2016-1')
 						if(data.type=='error')
 							layer.msg('密码错误',{icon:5})
 					},
