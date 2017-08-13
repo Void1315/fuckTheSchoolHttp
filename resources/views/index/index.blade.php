@@ -168,9 +168,16 @@
 		{
 			
 			if(time_)
+			{
+				table = 's_table'
 				data = time_
+			}
 			else
+			{
+				table = obj.getAttribute('data')
 				data = obj.value
+			}
+
 			$.ajax({
 				url:"{{url('/')}}/",
 				type:'post',
@@ -183,7 +190,7 @@
 						time = data.updated_at
 						data = data.result
 						data = JSON.parse(data);
-						the_obj = new TableReplace(data,$("#"+obj.getAttribute('data')));
+						the_obj = new TableReplace(data,$("#"+table);
 						the_obj.repalce();
 						the_obj.setTime(time);
 					}
