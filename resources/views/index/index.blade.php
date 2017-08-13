@@ -160,7 +160,7 @@
 			str = "<option value="+year+"-"+term+">"+year+"-"+(Number(year)+1)+"学年第二学期</option>"
 			if(first)
 			{
-				str = "<option selected='selected' value="+year+"-"+term+">"+year+"-"+(Number(year)+1)+"学年第二学期</option>"
+				str = "<option selected='selected' value='"+year+"-"+term+"''>"+year+"-"+(Number(year)+1)+"学年第"+term+"学期</option>"
 			}
 			$select_obj.append(str)
 		}
