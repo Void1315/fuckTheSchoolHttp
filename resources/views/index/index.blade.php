@@ -215,23 +215,24 @@
 		}
 		function getData_(index)
 			{
-				$.ajax({
-					url:"{{url('/getResults')}}",
-					data:{'_token':'{{csrf_token()}}'},
-					type:'get',
-					dataType:'json',
-					success:function(data)
-					{
-						index.close()
-						if(data.type=='error')
-							layer.msg('密码错误',{icon:5})
-					},
-					error:function(data)
-					{
-						index.close()
-						layer.msg('错误，请刷新',{icon:5})
-					}
-				})
+				index.close()
+				// $.ajax({
+				// 	url:"{{url('/getResults')}}",
+				// 	data:{'_token':'{{csrf_token()}}'},
+				// 	type:'get',
+				// 	dataType:'json',
+				// 	success:function(data)
+				// 	{
+				// 		index.close()
+				// 		if(data.type=='error')
+				// 			layer.msg('密码错误',{icon:5})
+				// 	},
+				// 	error:function(data)
+				// 	{
+				// 		index.close()
+				// 		layer.msg('错误，请刷新',{icon:5})
+				// 	}
+				// })
 			}
 		function ajaxGetReuslt()
 		{
