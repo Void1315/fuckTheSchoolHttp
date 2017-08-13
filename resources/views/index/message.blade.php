@@ -2,6 +2,15 @@
 @section('message')
 <link rel="stylesheet" type="text/css" href="{{url('css/index/message/message.css')}}">
 	<div class="main-content">
+	    @if (count($errors) > 0)
+		    <div class="alert alert-danger">
+		        <ul>
+		            @foreach ($errors->all() as $error)
+		                <li>{{ $error }}</li>
+		            @endforeach
+		        </ul>
+		    </div>
+		@endif
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
@@ -84,11 +93,11 @@
                 <h4 class="modal-title" id="myModalLabel">添加留言</h4>
             </div>
             <div class="modal-body">
-            	<form role='form' method="post">
+            	<form role='form' method="post" action="{{url('/addMessage')}}">
             		{{ csrf_field() }}
             		<div class="form-group">
 					    <label for="title">标题</label>
-					    <input type="text" class="form-control" id="title" placeholder="请输入标题">
+					    <input type="text" class="form-control" id="title" name="title" placeholder="请输入标题">
 					</div>
 					<div class="form-group">
 						<label for="text">内容</label>
@@ -112,7 +121,7 @@
 	{
 		var str = $obj.val().trim()//去首尾空格
 		$.ajax({
-			url:"{{url('')}}",
+			url:"{{url('/')}}",
 			type:'post',
 			dataType:'json',
 			success:function()

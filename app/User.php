@@ -41,7 +41,7 @@ class User extends Authenticatable
     {
         $email = $request->input('email');
         $password = $request->input('password');
-        User::create(Input::all())->update(['password' => Hash::make($request->input('password'))]);
+        $this->create(Input::all())->update(['password' => Hash::make($request->input('password'))]);
         Auth::attempt(['email' => $email, 'password' => $password]);
     }
     public function inUser($request)
@@ -60,16 +60,16 @@ class User extends Authenticatable
     }
     public function updateUser($request)
     {
-        User::where('id',Auth::id())->update($request->except('_token'));
+        $this->where('id',Auth::id())->update($request->except('_token'));
         return true;
     }
     public function getPasswd()
     {
-        return User::where('id',Auth::id())->first()->password;
+        return $this->where('id',Auth::id())->first()->password;
     }
     public function getStuPasswd()
     {
-        return User::where('id',Auth::id())->first()->stu_passwd;
+        return $this->where('id',Auth::id())->first()->stu_passwd;
     }
     public function isRegister($request)
     {
@@ -82,5 +82,30 @@ class User extends Authenticatable
         {
             return false;
         }
+    }
+    public function updatePaswd($email,$password)
+    {
+        $the_user = $this->where('email',$email);
+        if($the_user->update(['password'=>Hash::make($password)]))
+        {
+            $this->clearCode($the_user);
+            return redirect('\login');
+        }
+    }
+    protected function clearCode($the_user)
+    {
+        $the_user->update(['reset_code'=>'(NULL)']);
+    }
+    public function setCode($email,$code)
+    {
+        $this->where('email',$email)->update(['reset_code'=>$code]);
+        return true;
+    }
+    public function isCode($email,$code)
+    {
+        if($this->where('email',$email)->where('reset_code',$code)->first())
+            return true;
+        else
+            return false;
     }
 }

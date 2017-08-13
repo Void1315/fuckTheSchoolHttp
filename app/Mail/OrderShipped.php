@@ -32,10 +32,10 @@ class OrderShipped extends Mailable
             case 0:
                 return $this->view('mail.join');
                 break;
+            case 1:
+                return $this->view('mail.reset');
+                break;
             default:
-                $code = rand(5000,10000);
-                session($email,$code);
-                return $this->view('mail.reset')->with('code',$code);
                 break;
         }
         

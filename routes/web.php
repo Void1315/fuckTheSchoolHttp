@@ -20,8 +20,10 @@ Route::group(['namespace' => 'Auth','middleware' => 'web','middleware' => 'login
 	Route::any('/forgot','ForgotController@index');
 	Route::get('/geet','LoginController@geet');
 	Route::post('/validity','RegisterController@isRegister');
+
+	Route::get('/reset','ForgotController@reset');
+    Route::post('/updatePasswd','ForgotController@resetPassword');
 });
-Route::any('/resetpsd/{s_id?}','auth\ForgotController@reset');
 Route::group(['middleware' => 'auth'],function()
 {
 	Route::any('/','Index\IndexController@index');
@@ -32,6 +34,8 @@ Route::group(['middleware' => 'auth'],function()
 	Route::any('/message','Index\MessageController@index');
 	Route::get('/about','Index\IndexController@about');
 	Route::get('/getResults','Index\IndexController@getResults');
+
+	Route::any('/addMessage','Index\MessageController@addMessage');
 });
 
 
