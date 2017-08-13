@@ -13,17 +13,15 @@
 							    <select class="form-control" data='s_table' onchange="changeTable(this)">
 							    @if(isset($years))
 									@foreach($years as $year)
-									@foreach($terms as $term)
-									@if($term==1)
-									<option value="{{$year}}-{{$term}}">
-										{{$year}}-{{$year+1}}学年第二学期
-									</option>
-									@else
-									<option value="{{$year}}-{{$term}}">
-										{{$year}}-{{$year+1}}学年第一学期
-									</option>
-									@endif
-									@endforeach
+											@if($terms[$loop->index]==1)
+											<option value="{{$year}}-{{$terms[$loop->index]}}">
+												{{$year}}-{{$year+1}}学年第二学期
+											</option>
+											@else
+											<option value="{{$year}}-{{$terms[$loop->index]}}">
+												{{$year}}-{{$year+1}}学年第一学期
+											</option>
+											@endif
 									@endforeach
 								@endif
 							    </select>
@@ -174,6 +172,19 @@
 			})
 		}
 
+		function setTime()
+		{
+			$.ajax({
+				url:"{{url('/settime')}}",
+				type:'post',
+				data:{'_token':'{{csrf_token()}}'},
+				dataType:'json',
+				success:function(data)
+				{
+					console.log(data)
+				}
+			})
+		}
 	    $('#b_table').DataTable(
 	    	{
 	    		"info": false,
@@ -215,24 +226,25 @@
 		}
 		function getData_(index)
 			{
-				index.close()
-				// $.ajax({
-				// 	url:"{{url('/getResults')}}",
-				// 	data:{'_token':'{{csrf_token()}}'},
-				// 	type:'get',
-				// 	dataType:'json',
-				// 	success:function(data)
-				// 	{
-				// 		index.close()
-				// 		if(data.type=='error')
-				// 			layer.msg('密码错误',{icon:5})
-				// 	},
-				// 	error:function(data)
-				// 	{
-				// 		index.close()
-				// 		layer.msg('错误，请刷新',{icon:5})
-				// 	}
-				// })
+				$.ajax({
+					url:"{{url('/getResults')}}",
+					data:{'_token':'{{csrf_token()}}'},
+					type:'get',
+					dataType:'json',
+					success:function(data)
+					{
+						layer.close(index)
+						setTime()
+						changeTable(data,$("#s_table"))
+						if(data.type=='error')
+							layer.msg('密码错误',{icon:5})
+					},
+					error:function(data)
+					{
+						layer.close(index)
+						layer.msg('错误，请刷新',{icon:5})
+					}
+				})
 			}
 		function ajaxGetReuslt()
 		{

@@ -27,6 +27,7 @@ Route::group(['namespace' => 'Auth','middleware' => 'web','middleware' => 'login
 Route::group(['middleware' => 'auth'],function()
 {
 	Route::any('/','Index\IndexController@index');
+	Route::any('/settime','Index\IndexController@getTime');
 	Route::any('/config','Index\ConfigController@index');
 	Route::post('/config/stupasswd','Index\ConfigController@stuPasswd');
 	Route::any('/auth','Index\ConfigController@auth');

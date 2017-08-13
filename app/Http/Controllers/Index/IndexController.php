@@ -22,12 +22,6 @@ class IndexController extends Controller
     		return ;
     	}
     	$results = $model_obj->getNewResults();#获取最新成绩
-        // if(!$results)
-        // {
-        //     $sock = new \TheSocket(Auth::user()->stu_num.','.Auth::user()->stu_passwd);
-        //     $sock->getReturnData();
-        // }
-        // $results = $model_obj->getNewResults();#获取最新成绩
     	$years = $model_obj->getAllYears();
     	$terms = $model_obj->getAllTerms();
         if($results)
@@ -56,6 +50,14 @@ class IndexController extends Controller
     public function about()
     {
         return view('index.about');
+    }
+
+    public function getTime(Request $request)//获取最新时间
+    {
+        $obj = new Result();
+        $year_list = $obj->getAllYears();
+        $term_list = $obj->getAllTerms();
+        echo $this->goodJson(['year'=>$year_list,'term'=>$term_list]);
     }
 
     public function getResults(Request $request)//ajax异步获取

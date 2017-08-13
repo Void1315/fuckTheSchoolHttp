@@ -19,12 +19,12 @@ class Result extends Model
     }
     public function getAllYears()
     {
-        $u_id = User::where('id',Auth::id())->first()->stu_num;
-        return array_unique(Result::where('u_id',$u_id)->get(['year'])->pluck('year')->all());
+        $u_id = Auth::user()->stu_num;
+        return Result::where('u_id',$u_id)->get(['year'])->pluck('year')->all();
     }
     public function getAllTerms()
     {
-        $u_id = User::where('id',Auth::id())->first()->stu_num;
+        $u_id = Auth::user()->stu_num;
         return Result::where('u_id',$u_id)->get(['term'])->pluck('term')->all();
     }
     public function getNewResults()
