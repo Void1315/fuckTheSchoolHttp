@@ -166,9 +166,11 @@
 		}
 		function changeTable(obj,time_)
 		{
-			data = obj.value;
+			
 			if(time_)
 				data = time_
+			else
+				data = obj.value
 			$.ajax({
 				url:"{{url('/')}}/",
 				type:'post',
