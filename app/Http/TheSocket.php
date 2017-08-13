@@ -1,5 +1,5 @@
 <?php 
-
+namespace App\Http;
 class TheSocket
 {
 	function __construct($stuData)

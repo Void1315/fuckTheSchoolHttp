@@ -213,5 +213,41 @@
 			the_table.css('display')
 			the_table.css('transform','rotateY(0deg)')
 		}
+		function getData_(index)
+			{
+				$.ajax({
+					url:"{{url('/getResults')}}",
+					data:{'_token':'{{csrf_token()}}'},
+					type:'get',
+					dataType:'json',
+					success:function(data)
+					{
+						index.close()
+						if(data.type=='error')
+							layer.msg('密码错误',{icon:5})
+					},
+					error:function(data)
+					{
+						index.close()
+						layer.msg('错误，请刷新',{icon:5})
+					}
+				})
+			}
+		function ajaxGetReuslt()
+		{
+			var index;
+			var i_ = $('#s_table>tbody').children();
+			if(i_.length==1)
+			{
+				index = layer.msg('初次读取成绩可能需要1-2分钟',{
+						icon: 16,
+						shade: 0.3,
+						time:120*1000
+						});
+				getData_(index);
+			}
+			console.log(i_.length)
+		}
+		ajaxGetReuslt()
 	</script>
 @endsection

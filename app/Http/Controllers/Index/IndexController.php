@@ -10,8 +10,6 @@ use App\Mail\OrderShipped;
 use Illuminate\Support\Facades\Auth;
 use App\Http\TheSocket;
 
-include_once dirname(dirname(__FILE__)) . '\TheSocket.php';
-
 class IndexController extends Controller
 {
     //
@@ -24,9 +22,12 @@ class IndexController extends Controller
     		return ;
     	}
     	$results = $model_obj->getNewResults();#获取最新成绩
-        if(!$results)
-            new \TheSocket(Auth::user()->stu_num.','.Auth::user()->stu_passwd);
-        $results = $model_obj->getNewResults();#获取最新成绩
+        // if(!$results)
+        // {
+        //     $sock = new \TheSocket(Auth::user()->stu_num.','.Auth::user()->stu_passwd);
+        //     $sock->getReturnData();
+        // }
+        // $results = $model_obj->getNewResults();#获取最新成绩
     	$years = $model_obj->getAllYears();
     	$terms = $model_obj->getAllTerms();
         if($results)
@@ -57,8 +58,15 @@ class IndexController extends Controller
         return view('index.about');
     }
 
-    public function getResults(Request $request)
+    public function getResults(Request $request)//ajax异步获取
     {
-
+        $sock = new TheSocket(Auth::user()->stu_num.','.Auth::user()->stu_passwd);
+        $r_data = $sock->getReturnData();
+        if($r_data=='0')
+        {
+            echo $this->badJson('密码错误，请检查您的密码');
+        }
+        else
+            echo $this->goodJson($sock->getReturnData());
     }
 }
