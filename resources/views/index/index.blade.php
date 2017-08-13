@@ -10,7 +10,7 @@
 							<button onclick="transform_table(this);return false;" name='sim_table' class="btn btn-info btn-lg" style="background-color: #5bc0de;border-color: #46b8da;border: 1px solid transparent;">换至详图</button>
 							<div class="form-group the-from-div ">
 								<label for="name" class="">选择学期</label>
-							    <select class="form-control the-tb-select" data='s_table' onchange="changeTable(this)">
+							    <select class="form-control the-tb-select" data='s_table' id='a_l_sel' onchange="changeTable(this)">
 							    @if(isset($years))
 									@foreach($years as $year)
 											@if($terms[$loop->index]==1)
@@ -244,7 +244,7 @@
 					{
 						layer.close(index)
 						setTime()
-						changeTable(data,$("#s_table"))
+						changeTable($('#a_l_sel')[0])
 						if(data.type=='error')
 							layer.msg('密码错误',{icon:5})
 					},
