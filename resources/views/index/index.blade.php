@@ -167,9 +167,8 @@
 		function changeTable(obj,time_)
 		{
 			data = obj.value;
-			if(data==null)
+			if(time_)
 				data = time_
-			console.log(data)
 			$.ajax({
 				url:"{{url('/')}}/",
 				type:'post',
