@@ -8,7 +8,7 @@ use Illuminate\Routing\Redirector;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
-require_once dirname(dirname(__FILE__)) . '\Auth\GeetestLib.php';
+use App\Http\Controllers\Auth\GeetestLib;
 
 
 class LoginController extends Controller
