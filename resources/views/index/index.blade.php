@@ -153,30 +153,45 @@
 	
 	<script type="text/javascript">
 
-		function changeTable(obj)
+		
+		function addSelect(year,term,$select_obj,first)
 		{
-			data = obj.value
-			$.ajax({
-				url:"{{url('/')}}",
-				type:'post',
-				data:{'_token':'{{csrf_token()}}','time':data},
-				success:function(data)
-				{
-					time = JSON.parse(data)[1]
-					data = JSON.parse(data)[0]
-					data = JSON.parse(data)
-					the_obj = new TableReplace(data,$("#"+obj.getAttribute('data')))
-					the_obj.repalce()
-					the_obj.setTime(time)
-				}
-			})
-		}
 
-		function addSelect(year,term,$select_obj)
-		{
 			str = "<option value="+year+"-"+term+">"+year+"-"+(Number(year)+1)+"学年第二学期</option>"
+			if(first)
+			{
+				str = "<option selected='selected' value="+year+"-"+term+">"+year+"-"+(Number(year)+1)+"学年第二学期</option>"
+			}
 			$select_obj.append(str)
 		}
+		function changeTable(obj)
+		{
+			data = obj.value;
+			console.log(data)
+			$.ajax({
+				url:"{{url('/')}}/",
+				type:'post',
+				data:{'_token':'{{csrf_token()}}','time':data},
+				dataType:'json',
+				success:function(data)
+				{
+					if(data.type=='success')
+					{
+						time = data.updated_at
+						data = data.result
+						data = JSON.parse(data);
+						the_obj = new TableReplace(data,$("#"+obj.getAttribute('data')));
+						the_obj.repalce();
+						the_obj.setTime(time);
+					}
+				},
+				error:function(data)
+				{
+					console.log(data);
+				}
+			});
+		}
+
 		function setTime()
 		{
 			$.ajax({
@@ -189,7 +204,7 @@
 					if(data.type=='success')
 					{
 						for(i=0;i<data.year.length;i++)
-							addSelect(data.year[i],data.term[i],$(".the-tb-select"))
+							addSelect(data.year[i],data.term[i],$(".the-tb-select"),true)
 					}
 				}
 			})
@@ -268,8 +283,7 @@
 						});
 				getData_(index);
 			}
-			console.log(i_.length)
 		}
-		ajaxGetReuslt()
+		// ajaxGetReuslt()
 	</script>
 @endsection

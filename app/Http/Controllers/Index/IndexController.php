@@ -16,11 +16,13 @@ class IndexController extends Controller
     public function index(Request $request)
     {
     	$model_obj = new Result();
-    	if($request->isMethod('post'))
+
+    	if($request->ajax())
     	{
     		$this->returnData($request,$model_obj);
-    		return ;
+            return;
     	}
+        echo "string";
     	$results = $model_obj->getNewResults();#获取最新成绩
     	$years = $model_obj->getAllYears();
     	$terms = $model_obj->getAllTerms();
@@ -39,13 +41,12 @@ class IndexController extends Controller
     }
     protected function returnData($request,$model_obj)
     {
-    	$data = $request->input('time');
+    	$data = $request->time;
     	$data_list = explode('-',$data);
     	$year = $data_list[0];
     	$term = $data_list[1];
     	$json = $model_obj->getResult($year,$term);
-    	$the_data = json_encode(['0'=>$json->result,'1'=>$json->updated_at]);
-    	echo $the_data;
+    	echo $this->goodJson(['result'=>$json->result,'updated_at'=>$json->updated_at]);
     }
     public function about()
     {

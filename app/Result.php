@@ -33,7 +33,7 @@ class Result extends Model
     }
     public function getResult($year,$term)
     {
-        $u_id = User::where('id',Auth::id())->first()->stu_num;
+        $u_id = Auth::user()->stu_num;
         return Result::where('u_id',$u_id)->where('year',$year)->where('term',$term)->first();
     }
 }
