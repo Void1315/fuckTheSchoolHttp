@@ -119,21 +119,21 @@
 	}
 	function serch_msg($obj)
 	{
-		var str = $obj.val().trim()//去首尾空格
-		$.ajax({
-			url:"{{url('/')}}",
-			type:'post',
-			dataType:'json',
-			success:function()
-			{
+		// var str = $obj.val().trim()//去首尾空格
+		// $.ajax({
+		// 	url:"{{url('/')}}",
+		// 	type:'post',
+		// 	dataType:'json',
+		// 	success:function()
+		// 	{
 
-			},
-			error:function()
-			{
+		// 	},
+		// 	error:function()
+		// 	{
 				
-			}
-		})
-
+		// 	}
+		// })
+		layer.msg('这个功能还没写...')
 	}
 </script>
 @endsection

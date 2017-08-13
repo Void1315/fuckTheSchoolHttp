@@ -5,6 +5,7 @@
  *
  * @author Tanxu
  */
+namespace App\Http\Controllers\Auth;
 
 define("CAPTCHA_ID", "147abd15665991711058b410e99e8ebe");
 define("PRIVATE_KEY", "e2f8fbc034e5de79de274f31cd516bb9");
