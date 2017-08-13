@@ -10,7 +10,7 @@
 							<button onclick="transform_table(this);return false;" name='sim_table' class="btn btn-info btn-lg" style="background-color: #5bc0de;border-color: #46b8da;border: 1px solid transparent;">换至详图</button>
 							<div class="form-group the-from-div ">
 								<label for="name" class="">选择学期</label>
-							    <select class="form-control" data='s_table' onchange="changeTable(this)">
+							    <select class="form-control the-tb-select" data='s_table' onchange="changeTable(this)">
 							    @if(isset($years))
 									@foreach($years as $year)
 											@if($terms[$loop->index]==1)
@@ -81,7 +81,7 @@
 						<button onclick="transform_table(this);return false;" name='the_table' class="btn btn-info btn-lg" style="background-color: #5bc0de;border-color: #46b8da;border: 1px solid transparent;">换至简图</button>
 						<div class="form-group the-from-div ">
 							<label for="name" class="">选择学期</label>
-						    <select class="form-control" data='b_table' onchange="changeTable(this)">
+						    <select class="form-control the-tb-select" data='b_table' onchange="changeTable(this)">
 						    @if(isset($years))
 								@foreach($years as $year)
 								@foreach($terms as $term)
@@ -172,6 +172,11 @@
 			})
 		}
 
+		function addSelect(year,term,$select_obj)
+		{
+			str = "<option value="+year+"-"+term+">"+year+"-"+(Number(year)+1)+"学年第二学期</option>"
+			$select_obj.append(str)
+		}
 		function setTime()
 		{
 			$.ajax({
@@ -181,7 +186,11 @@
 				dataType:'json',
 				success:function(data)
 				{
-					console.log(data)
+					if(data.type=='success')
+					{
+						for(i=0;i<data.year.length;i++)
+							addSelect(data.year[i],data.term[i],$(".the-tb-select"))
+					}
 				}
 			})
 		}
