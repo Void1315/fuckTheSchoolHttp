@@ -24,8 +24,8 @@
             <input id="stu_num" type="text" class="form-control " value="{{ old('stu_num') }}" name="stu_num" required placeholder="学号(例2016010321)" autocomplete="off">
     </div>
     <div class="form-group">
-    	<label for="stu_passwd" class="sr-only">校园网密码</label>
-            <input id="stu_passwd" type="password" class="form-control" name="stu_passwd" required placeholder="校园网密码" autocomplete="off">
+    	<label for="stu_passwd" class="sr-only">学号密码</label>
+            <input id="stu_passwd" type="password" class="form-control" name="stu_passwd" required placeholder="学号密码" autocomplete="off">
     </div>
 	    @if (count($errors) > 0)
 		    <div class="alert alert-danger">
