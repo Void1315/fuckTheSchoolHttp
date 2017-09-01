@@ -271,7 +271,7 @@
 						setTime()
 						changeTable($('#a_l_sel').children()[0],'2016-1')
 						if(data.type=='error')
-							layer.msg('密码错误',{icon:5})
+							layer.msg('学号密码密码错误',{icon:5})
 					},
 					error:function(data)
 					{
