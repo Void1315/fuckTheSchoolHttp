@@ -20,7 +20,7 @@ Route::group(['namespace' => 'Auth','middleware' => 'web','middleware' => 'login
 	Route::any('/forgot','ForgotController@index');
 	Route::get('/geet','LoginController@geet');
 	Route::post('/validity','RegisterController@isRegister');
-
+	// Route::any('/elective','')
 	Route::get('/reset','ForgotController@reset');
     Route::post('/updatePasswd','ForgotController@resetPassword');
 });

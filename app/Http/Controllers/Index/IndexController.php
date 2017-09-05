@@ -62,7 +62,7 @@ class IndexController extends Controller
 
     public function getResults(Request $request)//ajax异步获取
     {
-        $sock = new TheSocket(Auth::user()->stu_num.','.Auth::user()->stu_passwd);
+        $sock = new TheSocket(Auth::user()->stu_num.','.Auth::user()->stu_passwd.',0');
         $r_data = $sock->getReturnData();
         if($r_data=='0')
         {
