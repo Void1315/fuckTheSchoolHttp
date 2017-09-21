@@ -19,7 +19,7 @@
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-	<link href="{{asset('css/fonts/thefont.css')}}" rel='stylesheet' type='text/css'>
+	<link href="{{asset('fonts/thefont.css')}}" rel='stylesheet' type='text/css'>
 	
 	<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css">
 	<link rel="stylesheet" href="{{asset('css/auth/animate.css')}}">
