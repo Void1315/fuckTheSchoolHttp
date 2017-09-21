@@ -6,7 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<!-- VENDOR CSS -->
-	<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+	<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css">
+
 	<link rel="stylesheet" href="{{asset('/assets/vendor/font-awesome/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{asset('/assets/vendor/linearicons/style.css')}}">
 	<link rel="stylesheet" href="{{asset('/assets/vendor/chartist/css/chartist-custom.css')}}">
@@ -15,14 +16,13 @@
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="{{asset('/assets/css/demo.css')}}">
 	<!-- GOOGLE FONTS -->
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<link href="{{asset('fonts/thefont2.css')}}" rel="stylesheet">
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="{{asset('/assets/img/apple-icon.png')}}">
 	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('/assets/img/favicon.png')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('/css/base.css')}}">
 	<!-- 表格排序插件 -->
-	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
-	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="{{asset('/css/table/jquery.dataTables.css')}}">
 	<script type="text/javascript" charset="utf8" src="{{asset('/js/table/jquery.dataTables.js')}}"></script>
 	<link rel="stylesheet" type="text/css" href="{{asset('/css/index/base.css')}}">
