@@ -23,8 +23,8 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('/css/base.css')}}">
 	<!-- 表格排序插件 -->
 	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="{{asset('/css/table/jquery.dataTables.css')}}">
-	<script type="text/javascript" charset="utf8" src="{{asset('/js/table/jquery.dataTables.js')}}"></script>
+	<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+	<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="{{asset('/css/index/base.css')}}">
 	<script type="text/javascript" src="{{asset('js/layer/layer.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/index/layout.js')}}"></script>
