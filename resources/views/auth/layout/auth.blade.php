@@ -31,7 +31,7 @@
 
 
 	
-	<script src="{{asset('js/jquery.min.js')}}"></script>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 	<!-- Bootstrap -->
 	<script type="text/javascript" src="{{asset('js/base.js')}}"></script>
 	<script src="{{asset('js/bootstrap.min.js')}}"></script>
