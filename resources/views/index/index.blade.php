@@ -77,21 +77,19 @@
 						<div class="form-group the-from-div ">
 							<label for="name" class="">选择学期</label>
 						    <select class="form-control the-tb-select" data='b_table' onchange="changeTable(this)">
-						    @if(isset($years))
-								@foreach($years as $year)
-								@foreach($terms as $term)
-								@if($term==1)
-								<option value="{{$year}}-{{$term}}">
-									{{$year}}-{{$year+1}}学年第二学期
-								</option>
-								@else
-								<option value="{{$year}}-{{$term}}">
-									{{$year}}-{{$year+1}}学年第一学期
-								</option>
+							    @if(isset($years))
+									@foreach($years as $year)
+											@if($terms[$loop->index]==1)
+											<option value="{{$year}}-{{$terms[$loop->index]}}">
+												{{$year}}-{{$year+1}}学年第二学期
+											</option>
+											@else
+											<option value="{{$year}}-{{$terms[$loop->index]}}">
+												{{$year}}-{{$year+1}}学年第一学期
+											</option>
+											@endif
+									@endforeach
 								@endif
-								@endforeach
-								@endforeach
-							@endif
 						    </select>
 						</div>
 						<div class="form-group the-from-div">
