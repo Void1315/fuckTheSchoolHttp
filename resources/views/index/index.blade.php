@@ -93,12 +93,7 @@
 						    </select>
 						</div>
 						<div class="form-group the-from-div">
-							<label for="name" class="control-label">筛选条件</label>
-						    <select class="form-control">
-						      <option>无</option>
-						      <option>只看及格</option>
-						      <option>只看挂科</option>
-						    </select>
+								<button type="button" class="btn btn-success" onclick="update_result()" style="background-color: #41B314;border-color: #3ca512;border: 1px solid transparent;height: 100%; padding: 0px 10px;">刷新成绩</button>
 						</div>
 					</form>
 				</div>
